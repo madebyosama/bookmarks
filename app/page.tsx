@@ -1,95 +1,88 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styles from './page.module.css';
+
+export default function Bookmarks() {
+  const [bookmarks, setBookmarks] = useState([]);
+  const [filtered, setFiltered] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  function filterByValue(array: any, string: any) {
+    return array.filter((o: any) =>
+      Object.keys(o).some((k) =>
+        o[k].toLowerCase().includes(string.toLowerCase())
+      )
+    );
+  }
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(
+      'https://opensheet.elk.sh/1jonPSUsmPe5NZ9odeGyrgt8I32oViHkQ79XFVYyv2ZU/1'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        setBookmarks(data);
+        setLoading(false);
+      });
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className={styles.bookmarks}>
+      <div className={styles.pageTitle}>
+        <div className={styles.sub}>Insanely useful websites</div>
+        <div className={styles.heading}>1000 Bookmarks</div>
+        <div className={styles.description}></div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      <div>
+        <input
+          placeholder='Search Bookmark'
+          className={styles.search}
+          onChange={(e) => {
+            setFiltered(e.target.value);
+          }}
         />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {loading ? (
+        <div>...</div>
+      ) : (
+        <div className={styles.grid}>
+          {filterByValue(bookmarks, filtered).map((s: any, index: any) => {
+            return (
+              <div
+                key={index}
+                className={styles.bookmark}
+                onClick={() => window.open(s.Link)}
+              >
+                <div className={styles.texts}>
+                  <Image
+                    src={s.Thumbnail}
+                    alt='Bookmark Image'
+                    className={`${styles.image} ${
+                      imageLoaded ? styles.show : styles.hide
+                    }`}
+                    width={1280}
+                    height={720}
+                    priority={true}
+                    onLoad={() => handleImageLoad()}
+                  />
+                  <div className={styles.title}>{s.Title}</div>
+                  <div className={styles.description}>{s.Description}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
