@@ -30,11 +30,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <script
-        defer
-        src='https://eu.umami.is/script.js'
-        data-website-id='1786b6da-1b70-4625-8319-4d96e39162e6'
-      ></script>
       <body className={font.className}>{children}</body>
     </html>
   );

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
+import Loading from './components/loading/Loading';
 
 export default function Bookmarks() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -74,7 +75,9 @@ export default function Bookmarks() {
         />
       </div>
       {loading ? (
-        <div>...</div>
+        <div>
+          <Loading />
+        </div>
       ) : (
         <div className={styles.grid}>
           {filterByValue(bookmarks, filtered).map((s: any, index: any) => {
