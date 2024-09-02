@@ -11,12 +11,32 @@ export default function Bookmarks() {
   const [loading, setLoading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  function filterByValue(array: any, string: any) {
-    return array.filter((o: any) =>
-      Object.keys(o).some((k) =>
-        o[k].toLowerCase().includes(string.toLowerCase())
-      )
-    );
+  type Bookmark = {
+    Title: string;
+    Link: string;
+    Description: string;
+    Tags: string; // Tags in the format "components, ui, ux"
+    Thumbnail: string;
+    Category: string;
+    Favicon: string;
+  };
+
+  // Updated filter function to match all search terms in specified fields
+  function filterByValue(array: Bookmark[], searchString: string): Bookmark[] {
+    const searchTerms = searchString.toLowerCase().split(' '); // Split search string into individual terms
+
+    return array.filter((item) => {
+      // Combine relevant fields into one searchable string with safety checks
+      const searchableContent = `
+        ${(item.Title || '').toLowerCase()} 
+        ${(item.Description || '').toLowerCase()} 
+        ${(item.Category || '').toLowerCase()} 
+        ${(item.Tags || '').toLowerCase().replace(/, /g, ' ')}
+      `;
+
+      // Check if all search terms are present in the combined string
+      return searchTerms.every((term) => searchableContent.includes(term));
+    });
   }
 
   const handleImageLoad = () => {
@@ -52,7 +72,6 @@ export default function Bookmarks() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-
         setBookmarks(data);
         setLoading(false);
       });
@@ -62,7 +81,9 @@ export default function Bookmarks() {
     <div className={styles.bookmarks}>
       <div className={styles.pageTitle}>
         <div className={styles.sub}>Insanely useful websites</div>
-        <div className={styles.heading}>1000 Bookmarks</div>
+        <div className={styles.heading}>
+          {bookmarks.length || `1000`} Bookmarks
+        </div>
         <div className={styles.description}></div>
       </div>
       <div>
