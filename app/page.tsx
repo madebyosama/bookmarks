@@ -15,15 +15,31 @@ export default function Bookmarks() {
     Title: string;
     Link: string;
     Description: string;
-    Tags: string; // Tags in the format "components, ui, ux"
+    Tags: string;
     Thumbnail: string;
     Category: string;
     Favicon: string;
   };
 
-  // Updated filter function to match all search terms in specified fields
+  // Function to calculate the similarity between two strings using Dice's Coefficient
+  function getSimilarity(str1: string, str2: string): number {
+    const bigrams = (s: string) =>
+      s
+        .toLowerCase()
+        .split('')
+        .map((_, i, arr) => arr.slice(i, i + 2).join(''))
+        .filter((v) => v.length === 2);
+
+    const bigrams1 = bigrams(str1);
+    const bigrams2 = bigrams(str2);
+    const intersection = bigrams1.filter((bigram) => bigrams2.includes(bigram));
+    return (2 * intersection.length) / (bigrams1.length + bigrams2.length);
+  }
+
+  // Updated filter function to match search terms with fuzzy search
   function filterByValue(array: Bookmark[], searchString: string): Bookmark[] {
-    const searchTerms = searchString.toLowerCase().split(' '); // Split search string into individual terms
+    const searchTerms = searchString.toLowerCase().split(' '); // Split the search string into individual terms
+    const threshold = 0.6; // Define a threshold for fuzzy matching (0.6 means 60% similarity)
 
     return array.filter((item) => {
       // Combine relevant fields into one searchable string with safety checks
@@ -34,8 +50,14 @@ export default function Bookmarks() {
         ${(item.Tags || '').toLowerCase().replace(/, /g, ' ')}
       `;
 
-      // Check if all search terms are present in the combined string
-      return searchTerms.every((term) => searchableContent.includes(term));
+      // Check if all search terms are present or sufficiently similar to the searchable content
+      return searchTerms.every((term) => {
+        const words = searchableContent.split(' ');
+        return words.some((word) => {
+          // Check if the word includes the term or has a similarity above the threshold
+          return word.includes(term) || getSimilarity(term, word) >= threshold;
+        });
+      });
     });
   }
 
