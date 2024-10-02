@@ -103,9 +103,7 @@ export default function Bookmarks() {
     <div className={styles.bookmarks}>
       <div className={styles.pageTitle}>
         <div className={styles.sub}>Insanely useful websites</div>
-        <div className={styles.heading}>
-          {bookmarks.length || `1000`} Bookmarks
-        </div>
+        <div className={styles.heading}>{bookmarks.length || ``} Bookmarks</div>
         <div className={styles.description}></div>
       </div>
       <div>
