@@ -19,7 +19,7 @@
 
 .sub {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .heading {
@@ -32,6 +32,7 @@
 
 .description {
   font-size: 16px;
+  font-weight: 500;
 }
 
 .description,
@@ -58,7 +59,7 @@
   color: #1e1e1e;
   font-family: inherit;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 16px 32px;
   width: -webkit-fill-available;
   margin-right: 8px;
@@ -150,7 +151,7 @@
 
 .title {
   color: #1e1e1e;
-  font-weight: 600;
+  font-weight: 700;
   font-variation-settings: 'wght' 700;
   font-size: 20px;
   letter-spacing: -0.4px;
@@ -165,7 +166,8 @@
 .description {
   color: #777777;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 500;
+  font-variation-settings: 'wght' 500;
   padding-top: 8px;
 }
 
