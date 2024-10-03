@@ -8,20 +8,7 @@ export const metadata: Metadata = {
   description: 'Collection of 1000 bookmarks',
 };
 
-const font = localFont({
-  src: [
-    {
-      path: './assets/font/Satoshi-Medium.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './assets/font/Satoshi-Black.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-  ],
-});
+const font = localFont({ src: './font.woff2' });
 
 export default function RootLayout({
   children,
