@@ -54,7 +54,7 @@
   margin-top: 40px;
   background-color: #f5f5f5;
   border-radius: 32px;
-  border: 1px solid #ebedef;
+  border: none;
   outline: none;
   color: #1e1e1e;
   font-family: inherit;
@@ -65,19 +65,10 @@
   margin-right: 8px;
 }
 
-.search:focus {
-  background-color: white;
-}
-
 @media (prefers-color-scheme: dark) {
   .search {
     background-color: #292929;
-    border: 1px solid #292929;
-    color: white;
-  }
-  .search:focus {
-    background-color: #333333;
-    border: 1px solid #424242;
+    color: #e4e6eb;
   }
 }
 
@@ -94,7 +85,7 @@
   border-radius: 24px;
   filter: grayscale(0%);
   background-color: #f5f5f5;
-  border: 1px solid #f5f5f5;
+  border: none;
   transition: 0.3s;
   display: flex;
   align-items: center;
@@ -105,7 +96,6 @@
 
 .bookmark:hover {
   background-color: #e3e3e3;
-  border: 1px solid #e3e3e3;
 }
 
 @media only screen and (max-width: 600px) {
@@ -125,11 +115,9 @@
 @media (prefers-color-scheme: dark) {
   .bookmark {
     background-color: #292929;
-    border: 1px solid #292929;
   }
   .bookmark:hover {
     background-color: #313131;
-    border: 1px solid #424242;
   }
 }
 
@@ -206,7 +194,7 @@
   right: 20px;
   width: 50px;
   height: 50px;
-  border: 1px solid #e8e8e8;
+  border: none;
   border-radius: 999px;
   background-color: #e8e8e8;
   opacity: 0;
@@ -221,17 +209,14 @@
 
 .back-to-top:hover {
   background-color: #e8e8e8;
-  border: 1px solid #ececec;
   transform: translateY(-5px);
 }
 
 @media (prefers-color-scheme: dark) {
   .back-to-top {
     background-color: #292929;
-    border: 1px solid #292929;
   }
   .back-to-top:hover {
     background-color: #313131;
-    border: 1px solid #424242;
   }
 }
