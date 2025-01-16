@@ -127,11 +127,6 @@ export default function Bookmarks() {
 
   return (
     <div className={styles.bookmarks}>
-      <div className={styles.pageTitle}>
-        <div className={styles.sub}>Insanely useful websites</div>
-        <div className={styles.heading}>{bookmarks.length || ``} Bookmarks</div>
-        <div className={styles.description}>© madebyosama.com</div>
-      </div>
       <div>
         <input
           placeholder='Search Bookmark'
