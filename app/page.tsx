@@ -3,12 +3,10 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import Loading from './components/loading/Loading';
 import bookmarks from './data/bookmarks';
 
 export default function Bookmarks() {
   const [filtered, setFiltered] = useState('');
-  const [loading, setLoading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
   type Bookmark = {
@@ -123,39 +121,34 @@ export default function Bookmarks() {
           }}
         />
       </div>
-      {loading ? (
-        <div>
-          <Loading />
-        </div>
-      ) : (
-        <div className={styles.grid}>
-          {filterByValue(bookmarks, filtered).map((s: any, index: any) => {
-            return (
-              <div
-                key={index}
-                className={styles.bookmark}
-                onClick={() => window.open(s.Link)}
-              >
-                <div className={styles.texts}>
-                  <Image
-                    src={s.Thumbnail}
-                    alt='Bookmark Image'
-                    className={`${styles.image} ${
-                      imageLoaded ? styles.show : styles.hide
-                    }`}
-                    width={1280}
-                    height={720}
-                    priority={true}
-                    onLoad={() => handleImageLoad()}
-                  />
-                  <div className={styles.title}>{s.Title}</div>
-                  <div className={styles.description}>{s.Description}</div>
-                </div>
+
+      <div className={styles.grid}>
+        {filterByValue(bookmarks, filtered).map((s: any, index: any) => {
+          return (
+            <div
+              key={index}
+              className={styles.bookmark}
+              onClick={() => window.open(s.Link)}
+            >
+              <div className={styles.texts}>
+                <Image
+                  src={s.Thumbnail}
+                  alt='Bookmark Image'
+                  className={`${styles.image} ${
+                    imageLoaded ? styles.show : styles.hide
+                  }`}
+                  width={1280}
+                  height={720}
+                  priority={true}
+                  onLoad={() => handleImageLoad()}
+                />
+                <div className={styles.title}>{s.Title}</div>
+                <div className={styles.description}>{s.Description}</div>
               </div>
-            );
-          })}
-        </div>
-      )}
+            </div>
+          );
+        })}
+      </div>
       <div className={styles.footer}>
         <div
           className={`${styles['back-to-top']} ${
