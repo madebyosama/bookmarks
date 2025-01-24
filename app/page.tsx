@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Loading from './components/loading/Loading';
+import bookmarks from './data/bookmarks';
 
 export default function Bookmarks() {
-  const [bookmarks, setBookmarks] = useState([]);
   const [filtered, setFiltered] = useState('');
   const [loading, setLoading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -111,19 +111,6 @@ export default function Bookmarks() {
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      'https://opensheet.elk.sh/1jonPSUsmPe5NZ9odeGyrgt8I32oViHkQ79XFVYyv2ZU/1'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setBookmarks(data);
-        setLoading(false);
-      });
-  }, []);
 
   return (
     <div className={styles.bookmarks}>
