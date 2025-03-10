@@ -262,6 +262,16 @@ const bookmarks = [
     Category: 'Utility',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Teamcamp',
+    Link: 'https://www.teamcamp.app/',
+    Description: 'Manage projects, collaborate with your team.',
+    Tags: 'project management',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fteamcamp.app.webp?alt=media&token=5d430753-5201-4bcf-a9d3-690d41d1b3bd',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
