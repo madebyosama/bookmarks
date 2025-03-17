@@ -280,6 +280,7 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fray.so.webp?alt=media&token=ebf3f9c8-6fa5-4fff-a588-8659c9f3beb8',
     Category: 'Utility',
+    Favicon: 'Favicon',
   },
 ];
 
