@@ -9,7 +9,8 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fsame.energy.webp?alt=media&token=c53319f6-6ccd-4e68-a052-c1c919befc18',
     Category: 'Utility',
-    Favicon: 'Favicon',
+    Favicon:
+      'https://img.notionusercontent.com/s3/prod-files-secure%2Fd71078c0-7e5c-4d00-bd4c-9de073cf5fbb%2F37bc4b96-9711-461e-954c-1841389c2e49%2FfaviconV2.png/size/w=250?exp=1744099681&sig=LL4vpOONLRLMKgnuyHP9MxNDMCKwWJgNB2rpnWiLrTE&id=1cbd114b-b4c2-804f-a6d8-c2a2cbf214f6&table=block&userId=459bff25-24a0-4dc8-8a7a-808541d9802d',
   },
   {
     Title: 'Extract Pics',
@@ -280,6 +281,27 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fray.so.webp?alt=media&token=ebf3f9c8-6fa5-4fff-a588-8659c9f3beb8',
     Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'MuscleWiki',
+    Link: 'https://musclewiki.com/',
+    Description:
+      'Interactive body map with 2000+ guided exercises for all fitness levels.',
+    Tags: 'fitness, exercises',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fmusclewiki.com.webp?alt=media&token=36f63f22-e986-4b21-8d26-e7420e86454c',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'MergeMyPDFs',
+    Link: 'https://mergemypdfs.com/',
+    Description: "Combine PDFs in a snap. It's quick and easy to use.",
+    Tags: 'pdf',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fmergemypdfs.com.webp?alt=media&token=65806ba1-2b38-4240-bb68-71ab119b9550',
+    Category: 'Tool',
     Favicon: 'Favicon',
   },
 ];
