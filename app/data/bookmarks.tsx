@@ -304,6 +304,37 @@ const bookmarks = [
     Category: 'Tool',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Index Guru',
+    Link: 'https://www.indexguru.io/',
+    Description: '#1 Website indexing tool. Index unindexed pages.',
+    Tags: 'seo, indexing',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Findexguru.com.webp?alt=media&token=e11dcd34-c716-4a0e-99f0-6f69a9af0825',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Logo System',
+    Link: 'https://logosystem.co/',
+    Description:
+      'Find inspiration by exploring this library of real and fictional logos.',
+    Tags: 'logo, graphic design',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Flogosystem.co.webp?alt=media&token=2acfb523-9b03-496a-b5f2-ec0fd9725f83',
+    Category: 'Inspiration',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Coolors',
+    Link: 'https://coolors.co/palettes/trending',
+    Description: 'Thousands of beautiful color palettes inspiration.',
+    Tags: 'colors, colours',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fcoolors.co.webp?alt=media&token=2dff7d11-8a82-4af3-96b8-aacd9e1262d7',
+    Category: 'Inspiration',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
