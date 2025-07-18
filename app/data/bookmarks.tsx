@@ -413,6 +413,7 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fthiings.co.webp?alt=media&token=77a5c491-5266-409d-9233-b09528796748',
     Category: 'Resources',
+    Favicon: 'Favicon',
   },
 ];
 
