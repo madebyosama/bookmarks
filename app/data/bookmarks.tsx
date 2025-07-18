@@ -335,6 +335,85 @@ const bookmarks = [
     Category: 'Inspiration',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Shortcuts Design',
+    Link: 'https://shortcuts.design/',
+    Description: 'Every shortcut for designers, centralized & searchable.',
+    Tags: 'shortcuts, softwares',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fshortcuts.design.webp?alt=media&token=f00213f2-78fa-4865-822b-45b63f832032',
+    Category: 'Productivity',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Daily Dev',
+    Link: 'https://app.daily.dev/',
+    Description: 'Quality knowledge about tech, design & development.',
+    Tags: 'learning, programming, coding',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fapp.daily.dev.webp?alt=media&token=07309c1d-6536-4c71-ad12-6bfe2a046090',
+    Category: 'Learning',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Uiverse',
+    Link: 'https://uiverse.io/',
+    Description: 'Free UI elements made with CSS.',
+    Tags: 'components, elements',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fuiverse.io.webp?alt=media&token=ab1c9c57-5b53-4f5c-9d3d-3fad4919905c',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Design Checklist',
+    Link: 'https://www.checklist.design/',
+    Description: 'List of checklists for user interface design.',
+    Tags: 'checklists, ui design',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fchecklist.design.webp?alt=media&token=c603c6ed-12db-4508-8132-666f8e8c95ec',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Gridzzly',
+    Link: 'https://gridzzly.com/',
+    Description: 'Make printable grid paper easily.',
+    Tags: 'printable paper, grids, layout',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fgridzzly.com.webp?alt=media&token=d3157b69-a973-4cb3-a52e-54efe8a79ae6',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'StoryMap',
+    Link: 'https://storymap.site/',
+    Description: 'Effortless user story mapping.',
+    Tags: 'brainstorming, mapping, planning',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fstorymap.site.webp?alt=media&token=c190e44c-1af3-4dd4-b758-9ea11baf813e',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Design Spells',
+    Link: 'https://www.designspells.com/',
+    Description: 'Design details that feel like magic.',
+    Tags: 'micro-interactions, design details',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fdesignspells.com.webp?alt=media&token=db0821a9-1ae7-483f-8f0e-7652c115c1c3',
+    Category: 'Inspiration',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Thiings',
+    Link: 'https://www.thiings.co/things',
+    Description: 'Collection of AI-generated, skeuomorphic icons.',
+    Tags: 'icons',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fthiings.co.webp?alt=media&token=77a5c491-5266-409d-9233-b09528796748',
+    Category: 'Resources',
+  },
 ];
 
 export default bookmarks;
