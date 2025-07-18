@@ -415,6 +415,16 @@ const bookmarks = [
     Category: 'Resources',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Colorway',
+    Link: 'https://colorway.app/',
+    Description: 'Eyedropper, color picker, and palette generator.',
+    Tags: 'colors, colours, tints, shades, hues',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fcolorway.app.webp?alt=media&token=d43be08c-cd51-4cfd-9eb9-45d6081c0ef0',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
