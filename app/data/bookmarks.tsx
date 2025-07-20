@@ -425,6 +425,16 @@ const bookmarks = [
     Category: 'Utility',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Picular',
+    Link: 'https://picular.co/',
+    Description: 'Generate colors based on anything like color of tiger.',
+    Tags: 'colors, colours, color generator, colors by search',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fpicular.co.webp?alt=media&token=b59080b4-2e22-4754-b52d-e95ee31583b7',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
