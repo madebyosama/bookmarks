@@ -435,6 +435,36 @@ const bookmarks = [
     Category: 'Utility',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'SVGL',
+    Link: 'https://svgl.app/',
+    Description: 'SVG logos of top tech brands and companies.',
+    Tags: 'logos, companies, brand',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fsvgl.app.webp?alt=media&token=a7bdf9b7-1258-423d-ae19-f528dc04dbd4',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Box Shadows',
+    Link: 'https://getcssscan.com/css-box-shadow-examples',
+    Description: '95 Beautiful CSS box-shadow examples.',
+    Tags: 'box shadow, css, styles',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fbox-shadows.webp?alt=media&token=4fbe1d52-b1d5-4744-ac54-290e89f0ce4a',
+    Category: 'Inspiration',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Neurodiversity',
+    Link: 'https://neurodiversity.design/',
+    Description: 'Design principles for better user experience.',
+    Tags: 'ux, design psychology, user experience',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fneurodiversity.design.webp?alt=media&token=c30f2b9b-7df0-4453-b984-ce9453e2aaca',
+    Category: 'Learning',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
