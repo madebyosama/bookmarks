@@ -465,6 +465,37 @@ const bookmarks = [
     Category: 'Learning',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Pomofocus',
+    Link: 'https://pomofocus.io/',
+    Description: 'Online pomodoro app to help focus on tasks.',
+    Tags: 'pomodoro, timer, clock, task management, productivity',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fpomofocus.io.webp?alt=media&token=7f4e2583-9270-4474-8497-b9e75b01620c',
+    Category: 'Productivity',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Designer Daily Report',
+    Link: 'https://designerdailyreport.com/',
+    Description: 'Curated newspaper for the designers.',
+    Tags: 'design, uiux, colors, inspiration, images, icons',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fdesignerdailyreport.com.webp?alt=media&token=607ff85a-8e5d-4b27-be74-1955c9376cd8',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Prototypr',
+    Link: 'https://prototypr.io/',
+    Description:
+      'Share your work, join the conversation, connect with creators.',
+    Tags: 'design, resources, community, uiux, prototyping',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fprototypr.io.webp?alt=media&token=ec012bfd-5874-458a-b43a-55f537c0e060',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
