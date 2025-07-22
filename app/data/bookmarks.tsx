@@ -496,6 +496,26 @@ const bookmarks = [
     Category: 'Resources',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Best Designs on X',
+    Link: 'https://bestdesignsonx.com/',
+    Description: 'Inspire by top designs posted on X.',
+    Tags: 'resources, design, uiux, prototyping, inspiration',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fbestdesignsonx.com.webp?alt=media&token=891e1c26-3504-4a4b-bad6-a3ceaa028fbe',
+    Category: 'Inspiration',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: '10015',
+    Link: 'https://10015.io/',
+    Description: 'All the tools you needed in one place.',
+    Tags: 'tools, utlity, typography, colors, images, editting, coding, programming, development',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2F10015.io.webp?alt=media&token=35aee447-dc9e-4898-b17b-aba049974c6c',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
