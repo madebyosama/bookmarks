@@ -516,6 +516,27 @@ const bookmarks = [
     Category: 'Utility',
     Favicon: 'Favicon',
   },
+  {
+    Title: 'Easing',
+    Link: 'https://www.easing.dev/',
+    Description: 'A curated collection of easing graphs.',
+    Tags: 'micro-interactions, animations, css',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Feasing.dev.webp?alt=media&token=0c62e9b5-e32a-4dee-ae84-8b9f22017545',
+    Category: 'Utility',
+
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Magic UI',
+    Link: 'https://magicui.design/',
+    Description: 'Collection of beautiful uiux components.',
+    Tags: 'uiux, components, ui elements, design',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fmagicui.design.webp?alt=media&token=f794abaf-99c7-4fb7-b994-4b305f84b240',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
 ];
 
 export default bookmarks;
