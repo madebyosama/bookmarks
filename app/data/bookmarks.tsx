@@ -9,8 +9,7 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fsame.energy.webp?alt=media&token=c53319f6-6ccd-4e68-a052-c1c919befc18',
     Category: 'Utility',
-    Favicon:
-      'https://img.notionusercontent.com/s3/prod-files-secure%2Fd71078c0-7e5c-4d00-bd4c-9de073cf5fbb%2F37bc4b96-9711-461e-954c-1841389c2e49%2FfaviconV2.png/size/w=250?exp=1744099681&sig=LL4vpOONLRLMKgnuyHP9MxNDMCKwWJgNB2rpnWiLrTE&id=1cbd114b-b4c2-804f-a6d8-c2a2cbf214f6&table=block&userId=459bff25-24a0-4dc8-8a7a-808541d9802d',
+    Favicon: 'Favicon',
   },
   {
     Title: 'Extract Pics',
@@ -524,7 +523,6 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Feasing.dev.webp?alt=media&token=0c62e9b5-e32a-4dee-ae84-8b9f22017545',
     Category: 'Utility',
-
     Favicon: 'Favicon',
   },
   {
@@ -535,6 +533,57 @@ const bookmarks = [
     Thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fmagicui.design.webp?alt=media&token=f794abaf-99c7-4fb7-b994-4b305f84b240',
     Category: 'Resources',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Microcopy',
+    Link: 'https://www.microcopy.me/',
+    Description: '500+ carefully curated microcopies for your website.',
+    Tags: 'copywriting, marketing, design pyschology',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fmicrocopy.me.webp?alt=media&token=d0e0a5c1-0c63-4a0b-910f-b57fcd90902b',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Landingfolio',
+    Link: 'https://www.landingfolio.com/',
+    Description:
+      'Landing page inspiration, figma, tailwind & webflow components.',
+    Tags: 'figma, components, tailwind, landing pages, webflow, ai, artificial intelligence',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Flandingfolio.com.webp?alt=media&token=1d02c3ea-0b9c-4115-a6ef-f81b1140d21e',
+    Category: 'Resources',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Serpdrill',
+    Link: 'https://www.serpdrill.com/',
+    Description: 'AI-powered keyword research and SERP analysis tool.',
+    Tags: 'seo tool, keyword research, serp analysis, ai content, niche targeting',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fserpdrill.com.webp?alt=media&token=17a46ff5-4a26-47af-bcd3-812452488507',
+    Category: 'Utility',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'The Stocks',
+    Link: 'https://thestocks.im/',
+    Description: 'Royalty-free stock photos, icons, videos, mockups.',
+    Tags: 'stock photos, mockups, icons, design assets',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Fthestocks.im.webp?alt=media&token=8cf80a5d-b325-4476-8c92-65d7c2efb9cf',
+    Category: 'Collection',
+    Favicon: 'Favicon',
+  },
+  {
+    Title: 'Emoji Kitchen',
+    Link: 'https://emoji.supply/kitchen/',
+    Description: 'Mix and match emojis for fun combos.',
+    Tags: 'emojis',
+    Thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/uploadedbyosama.appspot.com/o/Bookmarks%2Femoji.supply_kitchen.webp?alt=media&token=b2c00e10-4054-44f5-9e41-2c6ca128be06',
+    Category: 'Utility',
     Favicon: 'Favicon',
   },
 ];
