@@ -1,0 +1,28 @@
+.search {
+  margin-top: 40px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  color: #1e1e1e;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 32px;
+  width: -webkit-fill-available;
+  margin-right: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .search {
+    background-color: #292929;
+    color: #e4e6eb;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search {
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+}
