@@ -8,18 +8,22 @@ import BookmarkCard from './components/BookmarkCard/BookmarkCard';
 import { fetchBookmarks } from './services/bookmarkService';
 import { Bookmark } from './types';
 import { filterByValue } from './utils/filterBookmarks';
+import Loading from './components/Loading/Loading';
 
 export default function BookmarksPage() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [filtered, setFiltered] = useState('');
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function loadBookmarks() {
       const data = await fetchBookmarks();
+      setLoading(true);
       setBookmarks(data);
     }
     loadBookmarks();
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -40,11 +44,15 @@ export default function BookmarksPage() {
     <div className={styles.bookmarks}>
       <SearchBar value={filtered} onChange={setFiltered} />
 
-      <div className={styles.grid}>
-        {filteredBookmarks.map((bookmark, index) => (
-          <BookmarkCard key={index} bookmark={bookmark} />
-        ))}
-      </div>
+      {!loading ? (
+        <Loading />
+      ) : (
+        <div className={styles.grid}>
+          {filteredBookmarks.map((bookmark, index) => (
+            <BookmarkCard key={index} bookmark={bookmark} />
+          ))}
+        </div>
+      )}
 
       <div className={styles.footer}>
         <div
