@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/analytics",
+      "destination": "https://eu.umami.is/share/9L5Craad3lwi9vVJ/bookmarks.madebyosama.com",
+      "permanent": true
+    }
+  ]
+}
