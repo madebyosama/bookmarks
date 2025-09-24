@@ -42,7 +42,7 @@ const BookmarkCard: React.FC<BookmarkCardProps> = ({ bookmark }) => {
           }`}
           width={1280}
           height={720}
-          priority={true}
+          // priority={true}
           onLoad={() => setImageLoaded(true)}
         />
         <div className={styles.title}>{bookmark.Title}</div>
