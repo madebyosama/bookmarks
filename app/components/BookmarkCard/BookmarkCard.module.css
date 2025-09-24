@@ -88,3 +88,20 @@
 .show {
   opacity: 1;
 }
+
+.category {
+  background-color: #1e1d1d;
+  color: #292929;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+  width: fit-content;
+  border-radius: 999px;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

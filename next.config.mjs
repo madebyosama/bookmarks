@@ -9,8 +9,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'firebasestorage.googleapis.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.notion.so',
+      },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
