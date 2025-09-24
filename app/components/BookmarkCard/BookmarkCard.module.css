@@ -1,7 +1,8 @@
 .bookmark {
   margin-right: 8px;
   margin-bottom: 8px;
-  padding: 24px 24px 28px 24px;
+  /* padding: 24px 24px 24px 24px; */
+  padding: 16px 16px 12px 16px;
   border-radius: 24px;
   filter: grayscale(0%);
   background-color: #f5f5f5;
