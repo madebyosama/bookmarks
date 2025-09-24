@@ -45,19 +45,26 @@ const BookmarkCard: React.FC<BookmarkCardProps> = ({ bookmark }) => {
           // priority={true}
           onLoad={() => setImageLoaded(true)}
         />
-        <div className={styles.title}>{bookmark.Title}</div>
-        <div className={styles.description}>{bookmark.Description}</div>
-        <div className={styles.categoryContainer}>
-          <div
-            className={styles.category}
-            style={{
-              backgroundColor: categoryStyle.background,
-              color: categoryStyle.color,
-            }}
-          >
-            {bookmark.Category}
+        <div className={styles.content}>
+          <div className={styles.title}>{bookmark.Title}</div>
+          <div className={styles.description}>{bookmark.Description}</div>
+          <div className={styles.categoryContainer}>
+            <div
+              className={styles.category}
+              style={{
+                backgroundColor: categoryStyle.background,
+                color: categoryStyle.color,
+              }}
+            >
+              {bookmark.Category}
+            </div>
+            <img
+              src={bookmark.Favicon}
+              alt={'Favicon'}
+              width={24}
+              height={24}
+            />
           </div>
-          <img src={bookmark.Favicon} alt={'Favicon'} width={24} height={24} />
         </div>
       </div>
     </div>
