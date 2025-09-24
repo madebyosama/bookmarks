@@ -57,14 +57,7 @@ const BookmarkCard: React.FC<BookmarkCardProps> = ({ bookmark }) => {
           >
             {bookmark.Category}
           </div>
-          <div className={styles.favicon}>
-            <img
-              src={bookmark.Favicon}
-              alt={'Favicon'}
-              width={24}
-              height={24}
-            />
-          </div>
+          <img src={bookmark.Favicon} alt={'Favicon'} width={24} height={24} />
         </div>
       </div>
     </div>

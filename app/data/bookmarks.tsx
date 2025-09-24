@@ -8,7 +8,7 @@ const bookmarks = [
     Tags: 'bulk downloader, images from url',
     Thumbnail: '/assets/thumbnails/extract.pics.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/extract.pics.png',
   },
   {
     Title: 'Photopea',
@@ -17,7 +17,7 @@ const bookmarks = [
     Tags: 'photoshop, image editor, psd editor',
     Thumbnail: '/assets/thumbnails/photopea.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/photopea.com.png',
   },
   {
     Title: 'Vectorpea',
@@ -26,7 +26,7 @@ const bookmarks = [
     Tags: 'illustrator, vector editor, eps editor',
     Thumbnail: '/assets/thumbnails/vectorpea.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/vectorpea.com.png',
   },
   {
     Title: 'Monkey Type',
@@ -35,7 +35,7 @@ const bookmarks = [
     Tags: 'typing speed, typing practice',
     Thumbnail: '/assets/thumbnails/monkeytype.com.webp',
     Category: 'Productivity',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/monkeytype.com.png',
   },
   {
     Title: 'Hemingway App',
@@ -44,7 +44,7 @@ const bookmarks = [
     Tags: 'writing editor, grammer checker, proof reader',
     Thumbnail: '/assets/thumbnails/hemingwayapp.com.webp',
     Category: 'Productivity',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/hemingwayapp.com.png',
   },
   {
     Title: 'Witeboard',
@@ -53,7 +53,7 @@ const bookmarks = [
     Tags: 'whiteboard, brainstorming',
     Thumbnail: '/assets/thumbnails/witeboard.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/witeboard.com.png',
   },
   {
     Title: 'Excalidraw',
@@ -62,7 +62,7 @@ const bookmarks = [
     Tags: 'whiteboard, brainstorming',
     Thumbnail: '/assets/thumbnails/excalidraw.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/excalidraw.com.png',
   },
   {
     Title: 'Littler Books',
@@ -71,7 +71,7 @@ const bookmarks = [
     Tags: 'books to read, book suggestions, book summaries',
     Thumbnail: '/assets/thumbnails/littlerbooks.com.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/littlerbooks.com.png',
   },
   {
     Title: 'Quran',
@@ -81,7 +81,7 @@ const bookmarks = [
     Tags: 'quran recitation',
     Thumbnail: '/assets/thumbnails/quran.com.webp',
     Category: 'Reading',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/quran.com.png',
   },
   {
     Title: 'WordStream',
@@ -90,7 +90,7 @@ const bookmarks = [
     Tags: 'seo, search engine optimization',
     Thumbnail: '/assets/thumbnails/wordstream.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/wordstream.com.png',
   },
   {
     Title: 'Fast',
@@ -99,7 +99,7 @@ const bookmarks = [
     Tags: 'wifi, router, network',
     Thumbnail: '/assets/thumbnails/fast.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/fast.com.png',
   },
   {
     Title: 'Growth Design',
@@ -108,7 +108,7 @@ const bookmarks = [
     Tags: 'pyschology, uiux',
     Thumbnail: '/assets/thumbnails/design.growth.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/design.growth.png',
   },
   {
     Title: 'HTTPIE',
@@ -117,7 +117,7 @@ const bookmarks = [
     Tags: 'coding, javascript, react',
     Thumbnail: '/assets/thumbnails/httpie.io.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/httpie.io.png',
   },
   {
     Title: 'mymind',
@@ -126,7 +126,7 @@ const bookmarks = [
     Tags: 'bookmarks, collections, saved',
     Thumbnail: '/assets/thumbnails/mymind.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/mymind.com.png',
   },
   {
     Title: 'Curation of Curations',
@@ -135,7 +135,7 @@ const bookmarks = [
     Tags: 'user experience, design',
     Thumbnail: '/assets/thumbnails/curationofcurations.com.webp',
     Category: 'Collection',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/curationofcurations.com.png',
   },
   {
     Title: 'Eleven Labs',
@@ -144,7 +144,7 @@ const bookmarks = [
     Tags: 'text to speech, ai',
     Thumbnail: '/assets/thumbnails/elevanlabs.io.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/elevanlabs.io.png',
   },
   {
     Title: 'Uppbeat',
@@ -153,7 +153,7 @@ const bookmarks = [
     Tags: 'audio, sounds, music',
     Thumbnail: '/assets/thumbnails/uppbeat.io.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/uppbeat.io.png',
   },
   {
     Title: 'Navbar Gallery',
@@ -162,7 +162,7 @@ const bookmarks = [
     Tags: 'website design, components',
     Thumbnail: '/assets/thumbnails/navbar.gallery.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/navbar.gallery.png',
   },
   {
     Title: 'Footer Design',
@@ -171,7 +171,7 @@ const bookmarks = [
     Tags: 'website design, components',
     Thumbnail: '/assets/thumbnails/footer.design.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/footer.design.png',
   },
   {
     Title: 'App Motion Design',
@@ -180,7 +180,7 @@ const bookmarks = [
     Tags: 'micro-interactions, animations, app design',
     Thumbnail: '/assets/thumbnails/appmotion.design.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/appmotion.design.png',
   },
   {
     Title: '60fps',
@@ -189,7 +189,7 @@ const bookmarks = [
     Tags: 'micro-interactions, animations, app design',
     Thumbnail: '/assets/thumbnails/60fps.design.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/60fps.design.png',
   },
   {
     Title: 'Shots',
@@ -198,7 +198,7 @@ const bookmarks = [
     Tags: 'screenshot, mockup',
     Thumbnail: '/assets/thumbnails/shots.so.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/shots.so.png',
   },
   {
     Title: 'Tweek',
@@ -207,7 +207,7 @@ const bookmarks = [
     Tags: 'calendar, todolist',
     Thumbnail: '/assets/thumbnails/tweek.so.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/tweek.so.png',
   },
   {
     Title: 'UI Colors',
@@ -216,7 +216,7 @@ const bookmarks = [
     Tags: 'palettes, colors',
     Thumbnail: '/assets/thumbnails/uicolors.app.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/uicolors.app.png',
   },
   {
     Title: 'Octopus',
@@ -225,7 +225,7 @@ const bookmarks = [
     Tags: 'seo, search engine optimization, web design',
     Thumbnail: '/assets/thumbnails/octopus.do.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/octopus.do.png',
   },
   {
     Title: 'Teamcamp',
@@ -234,7 +234,7 @@ const bookmarks = [
     Tags: 'project management',
     Thumbnail: '/assets/thumbnails/teamcamp.app.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/teamcamp.app.png',
   },
   {
     Title: 'RaySo',
@@ -243,7 +243,7 @@ const bookmarks = [
     Tags: 'screenshot, social media post',
     Thumbnail: '/assets/thumbnails/ray.so.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/ray.so.png',
   },
   {
     Title: 'MuscleWiki',
@@ -253,7 +253,7 @@ const bookmarks = [
     Tags: 'fitness, exercises',
     Thumbnail: '/assets/thumbnails/musclewiki.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/musclewiki.com.png',
   },
   {
     Title: 'MergeMyPDFs',
@@ -262,7 +262,7 @@ const bookmarks = [
     Tags: 'pdf',
     Thumbnail: '/assets/thumbnails/mergemypdfs.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/mergemypdfs.com.png',
   },
   {
     Title: 'Index Guru',
@@ -271,7 +271,7 @@ const bookmarks = [
     Tags: 'seo, indexing',
     Thumbnail: '/assets/thumbnails/indexguru.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/indexguru.com.png',
   },
   {
     Title: 'Logo System',
@@ -281,7 +281,7 @@ const bookmarks = [
     Tags: 'logo, graphic design',
     Thumbnail: '/assets/thumbnails/logosystem.co.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/logosystem.co.png',
   },
   {
     Title: 'Coolors',
@@ -290,7 +290,7 @@ const bookmarks = [
     Tags: 'colors, colours',
     Thumbnail: '/assets/thumbnails/coolors.co.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/coolors.co.png',
   },
   {
     Title: 'Shortcuts Design',
@@ -299,7 +299,7 @@ const bookmarks = [
     Tags: 'shortcuts, softwares',
     Thumbnail: '/assets/thumbnails/shortcuts.design.webp',
     Category: 'Productivity',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/shortcuts.design.png',
   },
   {
     Title: 'Daily Dev',
@@ -308,7 +308,7 @@ const bookmarks = [
     Tags: 'learning, programming, coding',
     Thumbnail: '/assets/thumbnails/app.daily.dev.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/app.daily.dev.png',
   },
   {
     Title: 'Uiverse',
@@ -317,7 +317,7 @@ const bookmarks = [
     Tags: 'components, elements',
     Thumbnail: '/assets/thumbnails/uiverse.io.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/uiverse.io.png',
   },
   {
     Title: 'Design Checklist',
@@ -326,7 +326,7 @@ const bookmarks = [
     Tags: 'checklists, ui design',
     Thumbnail: '/assets/thumbnails/checklist.design.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/checklist.design.png',
   },
   {
     Title: 'Gridzzly',
@@ -335,7 +335,7 @@ const bookmarks = [
     Tags: 'printable paper, grids, layout',
     Thumbnail: '/assets/thumbnails/gridzzly.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/gridzzly.com.png',
   },
   {
     Title: 'StoryMap',
@@ -344,7 +344,7 @@ const bookmarks = [
     Tags: 'brainstorming, mapping, planning',
     Thumbnail: '/assets/thumbnails/storymap.site.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/storymap.site.png',
   },
   {
     Title: 'Design Spells',
@@ -353,7 +353,7 @@ const bookmarks = [
     Tags: 'micro-interactions, design details',
     Thumbnail: '/assets/thumbnails/designspells.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/designspells.com.png',
   },
   {
     Title: 'Thiings',
@@ -362,7 +362,7 @@ const bookmarks = [
     Tags: 'icons',
     Thumbnail: '/assets/thumbnails/thiings.co.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/thiings.co.png',
   },
   {
     Title: 'Colorway',
@@ -371,7 +371,7 @@ const bookmarks = [
     Tags: 'colors, colours, tints, shades, hues',
     Thumbnail: '/assets/thumbnails/colorway.app.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/colorway.app.png',
   },
   {
     Title: 'Picular',
@@ -380,7 +380,7 @@ const bookmarks = [
     Tags: 'colors, colours, color generator, colors by search',
     Thumbnail: '/assets/thumbnails/picular.co.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/picular.co.png',
   },
   {
     Title: 'SVGL',
@@ -389,7 +389,7 @@ const bookmarks = [
     Tags: 'logos, companies, brand',
     Thumbnail: '/assets/thumbnails/svgl.app.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/svgl.app.png',
   },
   {
     Title: 'Box Shadows',
@@ -398,7 +398,7 @@ const bookmarks = [
     Tags: 'box shadow, css, styles',
     Thumbnail: '/assets/thumbnails/box-shadows.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/box-shadows.png',
   },
   {
     Title: 'Neurodiversity',
@@ -407,7 +407,7 @@ const bookmarks = [
     Tags: 'ux, design psychology, user experience',
     Thumbnail: '/assets/thumbnails/neurodiversity.design.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/neurodiversity.design.png',
   },
   {
     Title: 'Pomofocus',
@@ -416,7 +416,7 @@ const bookmarks = [
     Tags: 'pomodoro, timer, clock, task management, productivity',
     Thumbnail: '/assets/thumbnails/pomofocus.io.webp',
     Category: 'Productivity',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/pomofocus.io.png',
   },
   {
     Title: 'Designer Daily Report',
@@ -425,7 +425,7 @@ const bookmarks = [
     Tags: 'design, uiux, colors, inspiration, images, icons',
     Thumbnail: '/assets/thumbnails/designerdailyreport.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/designerdailyreport.com.png',
   },
   {
     Title: 'Prototypr',
@@ -435,7 +435,7 @@ const bookmarks = [
     Tags: 'design, resources, community, uiux, prototyping',
     Thumbnail: '/assets/thumbnails/prototypr.io.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/prototypr.io.png',
   },
   {
     Title: 'Best Designs on X',
@@ -444,7 +444,7 @@ const bookmarks = [
     Tags: 'resources, design, uiux, prototyping, inspiration',
     Thumbnail: '/assets/thumbnails/bestdesignsonx.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/bestdesignsonx.com.png',
   },
   {
     Title: '10015',
@@ -453,7 +453,7 @@ const bookmarks = [
     Tags: 'tools, utlity, typography, colors, images, editting, coding, programming, development',
     Thumbnail: '/assets/thumbnails/10015.io.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/10015.io.png',
   },
   {
     Title: 'Easing',
@@ -462,7 +462,7 @@ const bookmarks = [
     Tags: 'micro-interactions, animations, css',
     Thumbnail: '/assets/thumbnails/easing.dev.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/easing.dev.png',
   },
   {
     Title: 'Magic UI',
@@ -471,7 +471,7 @@ const bookmarks = [
     Tags: 'uiux, components, ui elements, design',
     Thumbnail: '/assets/thumbnails/magicui.design.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/magicui.design.png',
   },
   {
     Title: 'Microcopy',
@@ -480,7 +480,7 @@ const bookmarks = [
     Tags: 'copywriting, marketing, design pyschology',
     Thumbnail: '/assets/thumbnails/microcopy.me.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/microcopy.me.png',
   },
   {
     Title: 'Landingfolio',
@@ -490,7 +490,7 @@ const bookmarks = [
     Tags: 'figma, components, tailwind, landing pages, webflow, ai, artificial intelligence',
     Thumbnail: '/assets/thumbnails/landingfolio.com.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/landingfolio.com.png',
   },
   {
     Title: 'Serpdrill',
@@ -499,7 +499,7 @@ const bookmarks = [
     Tags: 'seo tool, keyword research, serp analysis, ai content, niche targeting',
     Thumbnail: '/assets/thumbnails/serpdrill.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/serpdrill.com.png',
   },
   {
     Title: 'The Stocks',
@@ -508,7 +508,7 @@ const bookmarks = [
     Tags: 'stock photos, mockups, icons, design assets',
     Thumbnail: '/assets/thumbnails/thestocks.im.webp',
     Category: 'Collection',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/thestocks.im.png',
   },
   {
     Title: 'Emoji Kitchen',
@@ -517,7 +517,7 @@ const bookmarks = [
     Tags: 'emojis',
     Thumbnail: '/assets/thumbnails/emoji.supply_kitchen.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/emoji.supply_kitchen.png',
   },
   {
     Title: 'Logggos',
@@ -526,7 +526,7 @@ const bookmarks = [
     Tags: 'logo inspiration, branding, typography',
     Thumbnail: '/assets/thumbnails/logggos.club.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/logggos.club.png',
   },
   {
     Title: 'World Vector Logo',
@@ -535,7 +535,7 @@ const bookmarks = [
     Tags: 'vector logos, SVG downloads, brand logos',
     Thumbnail: '/assets/thumbnails/worldvectorlogo.com.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/worldvectorlogo.com.png',
   },
   {
     Title: 'Logo Book',
@@ -544,7 +544,7 @@ const bookmarks = [
     Tags: 'logos, inspiration',
     Thumbnail: '/assets/thumbnails/logobook.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/logobook.com.png',
   },
   {
     Title: 'Same Energy',
@@ -553,7 +553,7 @@ const bookmarks = [
     Tags: 'search engine',
     Thumbnail: '/assets/thumbnails/same.energy.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/same.energy.png',
   },
   {
     Title: 'Killer Portfolio',
@@ -562,7 +562,7 @@ const bookmarks = [
     Tags: 'inspiration, portfolio, web design',
     Thumbnail: '/assets/thumbnails/killerportfolio.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/killerportfolio.com.png',
   },
   {
     Title: 'Brand Archive',
@@ -571,7 +571,7 @@ const bookmarks = [
     Tags: 'graphic design, branding, logo, inspiration',
     Thumbnail: '/assets/thumbnails/brandarchive.xyz.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/brandarchive.xyz.png',
   },
   {
     Title: 'Wireframe Examples',
@@ -580,7 +580,7 @@ const bookmarks = [
     Tags: 'resources, design, uiux, prototyping, inspiration',
     Thumbnail: '/assets/thumbnails/wireframe-examples.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/wireframe-examples.com.png',
   },
   {
     Title: 'Fontshare',
@@ -589,7 +589,7 @@ const bookmarks = [
     Tags: 'fonts, typography, free fonts, typeface library, design assets',
     Thumbnail: '/assets/thumbnails/fontshare.com.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/fontshare.com.png',
   },
   {
     Title: 'Uncut',
@@ -598,7 +598,7 @@ const bookmarks = [
     Tags: 'indie fonts, type design, free typography, modern fonts, font collection',
     Thumbnail: '/assets/thumbnails/uncut.wtf.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/uncut.wtf.png',
   },
   {
     Title: 'Checklist Design',
@@ -607,7 +607,7 @@ const bookmarks = [
     Tags: 'checklists, ui design, ux, components, design process',
     Thumbnail: '/assets/thumbnails/checklist.design.webp',
     Category: 'Productivity',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/checklist.design.png',
   },
   {
     Title: 'Phosphor Icons',
@@ -617,7 +617,7 @@ const bookmarks = [
     Tags: 'icons, design assets, svg, ui elements, vector',
     Thumbnail: '/assets/thumbnails/phosphoricons.com.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/phosphoricons.com.png',
   },
   {
     Title: 'Flagpack',
@@ -626,16 +626,16 @@ const bookmarks = [
     Tags: 'flags, icons, svg, design assets, branding',
     Thumbnail: '/assets/thumbnails/flagpack.xyz.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/flagpack.xyz.png',
   },
   {
-    Title: 'How much I charge',
+    Title: 'How much I charge?',
     Link: 'https://thenuschool.com/how-much/',
     Description: 'Simple calculator to set your freelance rates.',
     Tags: 'freelance, pricing, calculator, business, design rates',
     Thumbnail: '/assets/thumbnails/thenuschool.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/thenuschool.com.png',
   },
   {
     Title: 'Producthunt',
@@ -644,7 +644,7 @@ const bookmarks = [
     Tags: 'startups, tools, inspiration, resources, tech',
     Thumbnail: '/assets/thumbnails/producthunt.com.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/producthunt.com.png',
   },
   {
     Title: 'tldraw',
@@ -654,7 +654,7 @@ const bookmarks = [
     Tags: 'whiteboard, brainstorming, collaboration, drawing, design tool',
     Thumbnail: '/assets/thumbnails/tldraw.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/tldraw.com.png',
   },
   {
     Title: 'Maker Stations',
@@ -663,7 +663,7 @@ const bookmarks = [
     Tags: 'workspace, inspiration, setup, productivity, creative spaces',
     Thumbnail: '/assets/thumbnails/makerstations.io.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/makerstations.io.png',
   },
   {
     Title: 'Cofolios',
@@ -673,7 +673,7 @@ const bookmarks = [
     Tags: 'design portfolios, inspiration, students, internships, uiux',
     Thumbnail: '/assets/thumbnails/cofolios.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/cofolios.com.png',
   },
   {
     Title: 'Country Flags',
@@ -682,7 +682,7 @@ const bookmarks = [
     Tags: 'country flags, icons, svg, assets, resources',
     Thumbnail: '/assets/thumbnails/linguana.io.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/linguana.io.png',
   },
   {
     Title: 'Patttterns',
@@ -691,7 +691,7 @@ const bookmarks = [
     Tags: 'design patterns, UX patterns, UI components, interaction design, inspiration',
     Thumbnail: '/assets/thumbnails/patttterns.net.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/patttterns.net.png',
   },
   {
     Title: 'Postable',
@@ -700,7 +700,7 @@ const bookmarks = [
     Tags: 'social media, content repurposing, copywriting, marketing',
     Thumbnail: '/assets/thumbnails/postable.app.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/postable.app.png',
   },
   {
     Title: 'Jitter',
@@ -710,7 +710,7 @@ const bookmarks = [
     Tags: 'motion design, animation tool, UIUX, collaborative, Figma integration',
     Thumbnail: '/assets/thumbnails/jitter.video.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/jitter.video.png',
   },
   {
     Title: 'Roadmaps',
@@ -720,7 +720,7 @@ const bookmarks = [
     Tags: 'tech career, learning paths, developer roadmaps, guides, community-powered',
     Thumbnail: '/assets/thumbnails/roadmap.sh.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/roadmap.sh.png',
   },
   {
     Title: 'MuscleWiki',
@@ -730,7 +730,7 @@ const bookmarks = [
     Tags: 'fitness, exercise guide, interactive anatomy, workout library, video demos',
     Thumbnail: '/assets/thumbnails/musclewiki.com.webp',
     Category: 'Collection',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/musclewiki.com.png',
   },
   {
     Title: 'Learn Anything',
@@ -740,17 +740,17 @@ const bookmarks = [
     Tags: 'learning paths, knowledge maps, resource discovery, community-curated, topic exploration',
     Thumbnail: '/assets/thumbnails/learn-anything.xyz.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/learn-anything.xyz.png',
   },
   {
     Title: 'Storytale',
-    Link: 'https://storytale.io/browse/',
+    Link: 'https://storytale.io/browse/?isFree=true',
     Description:
       'Free, high-quality illustrations & mockups for designers and creators.',
     Tags: 'free illustrations, design assets, mockups, vector graphics, creative resources',
     Thumbnail: '/assets/thumbnails/storytale.io.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/storytale.io.png',
   },
   {
     Title: 'Rive',
@@ -760,7 +760,7 @@ const bookmarks = [
     Tags: 'motion design, interactive animation, vector graphics, UIUX tool, export runtime',
     Thumbnail: '/assets/thumbnails/rive.app.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/rive.app.png',
   },
   {
     Title: 'Design Resources',
@@ -770,7 +770,7 @@ const bookmarks = [
     Tags: 'design resources, tools & assets, inspiration, UI/UX, free design directory',
     Thumbnail: '/assets/thumbnails/designresourc.es.webp',
     Category: 'Resources',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/designresourc.es.png',
   },
   {
     Title: 'Humane by Design',
@@ -780,7 +780,7 @@ const bookmarks = [
     Tags: 'ethical design, digital wellbeing, humane UX, design principles, inclusive design',
     Thumbnail: '/assets/thumbnails/humanebydesign.com.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/humanebydesign.com.png',
   },
   {
     Title: '30 Seconds of Code',
@@ -789,7 +789,7 @@ const bookmarks = [
     Tags: 'programming, snippets, js tutorials, learning resources, web development',
     Thumbnail: '/assets/thumbnails/30secondsofcode.org.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/30secondsofcode.org.png',
   },
   {
     Title: 'Instant Domain Search',
@@ -799,7 +799,7 @@ const bookmarks = [
     Tags: 'domain search, domain generator, TLDs, premium domains, domain tools',
     Thumbnail: '/assets/thumbnails/instantdomainsearch.com.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/instantdomainsearch.com.png',
   },
   {
     Title: 'Marketer Gems',
@@ -809,7 +809,7 @@ const bookmarks = [
     Tags: 'marketing newsletter, growth tips, tools & apps, campaigns breakdown, content curator',
     Thumbnail: '/assets/thumbnails/marketergems.com.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/marketergems.com.png',
   },
   {
     Title: 'Flowmapp',
@@ -819,7 +819,7 @@ const bookmarks = [
     Tags: 'sitemaps, user flows, wireframing, collaboration tool, UX planning',
     Thumbnail: '/assets/thumbnails/flowmapp.com.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/flowmapp.com.png',
   },
   {
     Title: 'Imgly BG Removal',
@@ -828,7 +828,7 @@ const bookmarks = [
     Tags: 'background removal, ai background removal, remove image background, online background remover, photo background eraser',
     Thumbnail: '/assets/thumbnails/img.ly.webp',
     Category: 'Tool',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/img.ly.png',
   },
   {
     Title: 'Ad Gallery',
@@ -838,7 +838,7 @@ const bookmarks = [
     Tags: 'display ads, ad inspiration, digital marketing, ad gallery, creative advertising, ad design',
     Thumbnail: '/assets/thumbnails/adgallery.xyz.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/adgallery.xyz.png',
   },
   {
     Title: 'Brand Bird',
@@ -848,7 +848,7 @@ const bookmarks = [
     Tags: 'screenshot editor, mockup designs, social media graphics, 3D effects, templates, visual branding',
     Thumbnail: '/assets/thumbnails/brandbird.app.webp',
     Category: 'Utility',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/brandbird.app.png',
   },
   {
     Title: 'Build for Mars',
@@ -858,7 +858,7 @@ const bookmarks = [
     Tags: 'UX inspiration, UX trends, product design, user experience ideas, UI patterns',
     Thumbnail: '/assets/thumbnails/builtformars.com.webp',
     Category: 'Learning',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/builtformars.com.png',
   },
   {
     Title: 'Chamjo',
@@ -867,7 +867,7 @@ const bookmarks = [
     Tags: 'local app UX, UI inspiration, app screenshots, regional apps, UX research, design benchmarks',
     Thumbnail: '/assets/thumbnails/chamjo.design.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/chamjo.design.png',
   },
   {
     Title: 'CTA Examples',
@@ -877,7 +877,7 @@ const bookmarks = [
     Tags: 'ctas, call to action examples, button copy, marketing conversion, copywriting tips',
     Thumbnail: '/assets/thumbnails/ctaexamples.com.webp',
     Category: 'Inspiration',
-    Favicon: '/assets/favicons/teamcamp.png',
+    Favicon: '/assets/favicons/ctaexamples.com.png',
   },
 ]
 
