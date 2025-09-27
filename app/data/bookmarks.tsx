@@ -401,15 +401,6 @@ const bookmarks = [
     Favicon: '/assets/favicons/box-shadows.png',
   },
   {
-    Title: 'Neurodiversity',
-    Link: 'https://neurodiversity.design/',
-    Description: 'Design principles for better user experience.',
-    Tags: 'ux, design psychology, user experience',
-    Thumbnail: '/assets/thumbnails/neurodiversity.design.webp',
-    Category: 'Learning',
-    Favicon: '/assets/favicons/neurodiversity.design.png',
-  },
-  {
     Title: 'Pomofocus',
     Link: 'https://pomofocus.io/',
     Description: 'Online pomodoro app to help focus on tasks.',
