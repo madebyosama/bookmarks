@@ -870,6 +870,16 @@ const bookmarks = [
     Category: 'Inspiration',
     Favicon: '/assets/favicons/ctaexamples.com.png',
   },
+  {
+    Title: '3D Icons',
+    Link: 'https://3dicons.co/',
+    Description:
+      'Free open-source 3D icon library ready for your design projects.',
+    Tags: '3d icons, free design assets, vector graphics, icon library, creative resources',
+    Thumbnail: '/assets/thumbnails/3dicons.co.webp',
+    Category: 'Resources',
+    Favicon: '/assets/thumbnails/3dicons.co.png',
+  },
 ]
 
 export default bookmarks
