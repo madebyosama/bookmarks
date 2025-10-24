@@ -878,7 +878,16 @@ const bookmarks = [
     Tags: '3d icons, free design assets, vector graphics, icon library, creative resources',
     Thumbnail: '/assets/thumbnails/3dicons.co.webp',
     Category: 'Resources',
-    Favicon: '/assets/thumbnails/3dicons.co.png',
+    Favicon: '/assets/favicons/3dicons.co.png',
+  },
+  {
+    Title: 'Icon Buddy',
+    Link: 'https://iconbuddy.com/',
+    Description: 'Search and edit 200,000+ free open-source SVG icons.',
+    Tags: 'icons, free design assets, svg library, ui elements, vector graphics',
+    Thumbnail: '/assets/thumbnails/iconbuddy.com.webp',
+    Category: 'Resources',
+    Favicon: '/assets/favicons/iconbuddy.com.png',
   },
 ]
 
