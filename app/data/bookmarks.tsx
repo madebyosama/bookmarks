@@ -1024,6 +1024,15 @@ const bookmarks = [
     Category: 'AI',
     Favicon: '/assets/favicons/whatthefood.io.png',
   },
+  {
+    Title: 'TempMail',
+    Link: 'https://tempmail.so/',
+    Description: 'Temporary anonymous disposable email address.',
+    Tags: 'temporary email, disposable',
+    Thumbnail: '/assets/thumbnails/tempmail.so.webp',
+    Category: 'Utility',
+    Favicon: '/assets/favicons/tempmail.so.png',
+  },
 ]
 
 export default bookmarks
