@@ -51,7 +51,7 @@ export default function BookmarksPage() {
             madebyosama
           </a>
         </div>
-        <h1 className={styles.title}>Bookmarks</h1>
+        <p className={styles.title}>Bookmarks</p>
         <p className={styles.subtitle}>
           Insanely useful collection of 1000 websites.
           <br />

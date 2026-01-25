@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import styles from './SearchBar.module.css'
 
 interface SearchBarProps {
@@ -9,28 +8,28 @@ interface SearchBarProps {
   placeholder?: string
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ 
-  value, 
-  onChange, 
-  placeholder = 'Search bookmarks...' 
-}) => {
+export default function SearchBar({
+  value,
+  onChange,
+  placeholder = 'Search palettes...',
+}: SearchBarProps) {
   return (
     <div className={styles.searchContainer}>
       <svg
         className={styles.searchIcon}
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        fill='none'
+        stroke='currentColor'
+        viewBox='0 0 24 24'
       >
         <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          strokeLinecap='round'
+          strokeLinejoin='round'
           strokeWidth={2}
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
         />
       </svg>
       <input
-        type="text"
+        type='text'
         className={styles.searchInput}
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -39,12 +38,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <button
         className={`${styles.clearButton} ${value ? styles.show : ''}`}
         onClick={() => onChange('')}
-        type="button"
+        type='button'
       >
         ×
       </button>
     </div>
   )
 }
-
-export default SearchBar
