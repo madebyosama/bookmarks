@@ -26,10 +26,11 @@
 .title {
   font-size: 36px;
   font-weight: 700;
-  font-variation-settings: 'wght' 800;
+  font-variation-settings: 'wght' 700;
   letter-spacing: -1px;
   color: #1e1e1e;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .subtitle {

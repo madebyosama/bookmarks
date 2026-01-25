@@ -4,7 +4,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Bookmarks | Made By Osama',
+  title: 'Bookmarks',
   description: 'Collection of 1000 bookmarks',
 }
 
