@@ -43,24 +43,31 @@ export default function BookmarksPage() {
     <div className={styles.bookmarks}>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <a href="https://madebyosama.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href='https://madebyosama.com'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             madebyosama
           </a>
         </div>
         <h1 className={styles.title}>Bookmarks</h1>
         <p className={styles.subtitle}>
-          A curated collection of useful tools and resources for designers and developers.
+          Insanely useful collection of 1000 websites.
+          <br />
+          All hand-picked 🤏 by me.
         </p>
-        <SearchBar 
-          value={filtered} 
-          onChange={setFiltered} 
-          placeholder="Search by name, tag, or category..."
+        <SearchBar
+          value={filtered}
+          onChange={setFiltered}
+          placeholder='Search by name, tag, or category...'
         />
       </header>
 
       <div className={styles.filters}>
         <span className={styles.count}>
-          {filteredBookmarks.length} {filteredBookmarks.length === 1 ? 'bookmark' : 'bookmarks'}
+          {filteredBookmarks.length}{' '}
+          {filteredBookmarks.length === 1 ? 'bookmark' : 'bookmarks'}
         </span>
       </div>
 
@@ -75,7 +82,9 @@ export default function BookmarksPage() {
           ) : (
             <div className={styles.empty}>
               <div className={styles.emptyTitle}>No bookmarks found</div>
-              <p className={styles.emptyText}>Try searching for a different term</p>
+              <p className={styles.emptyText}>
+                Try searching for a different term
+              </p>
             </div>
           )}
         </div>
@@ -85,9 +94,9 @@ export default function BookmarksPage() {
         <p className={styles.footerText}>
           Built by{' '}
           <a
-            href="https://madebyosama.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://madebyosama.com'
+            target='_blank'
+            rel='noopener noreferrer'
             className={styles.footerLink}
           >
             Muhammad Osama
