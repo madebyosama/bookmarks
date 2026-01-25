@@ -52,11 +52,7 @@ export default function BookmarksPage() {
           </a>
         </div>
         <p className={styles.title}>Bookmarks</p>
-        <p className={styles.subtitle}>
-          Insanely useful collection of 1000 websites.
-          <br />
-          All hand-picked 🤏 by me.
-        </p>
+        <p className={styles.subtitle}>Collection of useful websites.</p>
         <SearchBar
           value={filtered}
           onChange={setFiltered}
