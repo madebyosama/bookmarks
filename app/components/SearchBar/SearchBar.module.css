@@ -67,13 +67,9 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .searchContainer {
-    width: 100%;
-  }
   .searchInput {
     background-color: #292929;
     color: #f5f5f5;
-    width: 385px;
   }
 
   .searchInput::placeholder {
@@ -101,5 +97,8 @@
 @media only screen and (max-width: 600px) {
   .searchContainer {
     max-width: 100%;
+  }
+  .searchInput {
+    width: 385px;
   }
 }
