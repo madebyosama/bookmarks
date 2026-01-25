@@ -1,25 +1,50 @@
-// src/components/SearchBar.tsx
-'use client';
+'use client'
 
-import React from 'react';
-import styles from './SearchBar.module.css';
+import React from 'react'
+import styles from './SearchBar.module.css'
 
 interface SearchBarProps {
-  value: string;
-  onChange: (value: string) => void;
+  value: string
+  onChange: (value: string) => void
+  placeholder?: string
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ 
+  value, 
+  onChange, 
+  placeholder = 'Search bookmarks...' 
+}) => {
   return (
-    <div>
+    <div className={styles.searchContainer}>
+      <svg
+        className={styles.searchIcon}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
       <input
-        placeholder='Search Bookmark'
-        className={styles.search}
+        type="text"
+        className={styles.searchInput}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
       />
+      <button
+        className={`${styles.clearButton} ${value ? styles.show : ''}`}
+        onClick={() => onChange('')}
+        type="button"
+      >
+        ×
+      </button>
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar

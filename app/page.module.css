@@ -1,51 +1,83 @@
-.pageTitle {
+/* Header */
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--foreground-color);
+  padding: 64px 0 48px;
+  gap: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .pageTitle {
-    color: #f5f5f5;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .pageTitle {
-    margin-bottom: 40px;
-  }
-}
-
-.sub {
+.logo {
   font-size: 14px;
   font-weight: 500;
-}
-
-.heading {
-  letter-spacing: -0.3px;
-  font-size: 24px;
-  font-weight: 600;
-  font-variation-settings: 'wght' 700;
+  color: #777777;
   margin-bottom: 8px;
 }
 
-.description {
+.logo a {
+  color: #0025e8;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  font-variation-settings: 'wght' 700;
+  letter-spacing: -1px;
+  color: #1e1e1e;
+  margin-bottom: 8px;
+}
+
+.subtitle {
   font-size: 16px;
-  font-weight: 500;
+  color: #777777;
+  text-align: center;
+  max-width: 500px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
-.description,
-.sub {
-  color: var(--text-light);
-}
+@media (prefers-color-scheme: dark) {
+  .logo {
+    color: #aaaaaa;
+  }
 
-@media only screen and (max-width: 600px) {
-  .bookmarks {
-    padding: 0px 24px;
+  .title {
+    color: #f5f5f5;
+  }
+
+  .subtitle {
+    color: #aaaaaa;
   }
 }
 
+/* Filters */
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.count {
+  font-size: 14px;
+  color: #777777;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .count {
+    color: #aaaaaa;
+  }
+}
+
+/* Grid */
 .grid {
   margin-top: 8px;
   display: grid;
@@ -58,50 +90,131 @@
   }
 }
 
-.footer {
-  margin: 64px 64px;
-  padding-bottom: 64px;
-  padding-right: 64px;
-  border-radius: 12px;
-  display: flex;
+/* Empty State */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
 }
 
-.back-to-top {
-  color: white;
-  font-weight: 500;
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1e1e1e;
+}
+
+.emptyText {
+  font-size: 15px;
+  color: #777777;
+}
+
+@media (prefers-color-scheme: dark) {
+  .emptyTitle {
+    color: #f5f5f5;
+  }
+
+  .emptyText {
+    color: #aaaaaa;
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px 0 48px;
+  border-top: 1px solid #f5f5f5;
+  margin-top: 32px;
+}
+
+.footerText {
   font-size: 14px;
+  color: #777777;
+}
+
+.footerLink {
+  color: #0025e8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    border-top: 1px solid #292929;
+  }
+
+  .footerText {
+    color: #aaaaaa;
+  }
+}
+
+/* Back to Top */
+.backToTop {
+  color: #1e1e1e;
+  font-weight: 600;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 16px;
-  border-radius: 10px;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   border: none;
-  background-color: #e8e8e8;
+  background-color: #f5f5f5;
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  box-shadow: rgba(255, 255, 255, 0.07) 0px 1px 0px 0px inset;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
 }
 
-.back-to-top.show {
+.backToTop.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.back-to-top:hover {
+.backToTop:hover {
   background-color: #e8e8e8;
-  transform: translateY(-5px);
 }
 
 @media (prefers-color-scheme: dark) {
-  .back-to-top {
+  .backToTop {
     background-color: #292929;
+    color: #f5f5f5;
   }
-  .back-to-top:hover {
-    background-color: #313131;
+
+  .backToTop:hover {
+    background-color: #333333;
+  }
+}
+
+/* Bookmarks Container */
+@media only screen and (max-width: 600px) {
+  .bookmarks {
+    padding: 0px 24px;
+  }
+
+  .header {
+    padding: 40px 0 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    padding: 0 16px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
