@@ -1,11 +1,9 @@
 .searchContainer {
   position: relative;
-  width: 100%;
-  max-width: 400px;
 }
 
 .searchInput {
-  width: 100%;
+  width: 400px;
   padding: 14px 20px 14px 48px;
   font-size: 15px;
   font-family: inherit;
@@ -15,7 +13,9 @@
   background-color: #f5f5f5;
   color: #1e1e1e;
   outline: none;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .searchInput::placeholder {
@@ -67,9 +67,13 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  .searchContainer {
+    width: 100%;
+  }
   .searchInput {
     background-color: #292929;
     color: #f5f5f5;
+    width: 385px;
   }
 
   .searchInput::placeholder {
