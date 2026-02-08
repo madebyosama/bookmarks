@@ -39,7 +39,7 @@ export default function RootLayout({
         <script
           defer
           src='https://cloud.umami.is/script.js'
-          data-website-id='e7edaf57-6630-4365-bad6-8a51c132a819'
+          data-website-id='51ea0a73-379b-4fcb-b6e9-ff93df70faec'
         ></script>
       </head>
       <body className={satoshi.className}>{children}</body>
