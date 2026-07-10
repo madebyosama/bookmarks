@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 const satoshi = localFont({
   src: [
     {
-      path: './assets/fonts/Satoshi-Medium.woff2',
+      path: './assets/fonts/GoogleSans_17pt-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './assets/fonts/Satoshi-Bold.woff2',
+      path: './assets/fonts/GoogleSans-SemiBold.ttf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: './assets/fonts/Satoshi-Black.woff2',
+      path: './assets/fonts/GoogleSans-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
