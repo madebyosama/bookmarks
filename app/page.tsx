@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import SearchBar from './components/SearchBar/SearchBar'
 import BookmarkCard from './components/BookmarkCard/BookmarkCard'
@@ -12,7 +12,6 @@ import Loading from './components/Loading/Loading'
 export default function BookmarksPage() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
   const [filtered, setFiltered] = useState('')
-  const [activeCategory, setActiveCategory] = useState('All')
   const [showScrollToTop, setShowScrollToTop] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -27,130 +26,64 @@ export default function BookmarksPage() {
   }, [])
 
   useEffect(() => {
-    const handleScroll = () => setShowScrollToTop(window.scrollY > 200)
+    const handleScroll = () => {
+      setShowScrollToTop(window.scrollY > 200)
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const categories = useMemo(() => {
-    const counts: Record<string, number> = {}
-    bookmarks.forEach((b) => {
-      counts[b.Category] = (counts[b.Category] || 0) + 1
-    })
-    return Object.entries(counts).sort((a, b) => b[1] - a[1])
-  }, [bookmarks])
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
-  const searched = filterByValue(bookmarks, filtered)
-  const visible =
-    activeCategory === 'All'
-      ? searched
-      : searched.filter((b) => b.Category === activeCategory)
-
-  // Group by category for the "All" explore view
-  const grouped = useMemo(() => {
-    const map: Record<string, Bookmark[]> = {}
-    visible.forEach((b) => {
-      ;(map[b.Category] = map[b.Category] || []).push(b)
-    })
-    return Object.entries(map).sort((a, b) => b[1].length - a[1].length)
-  }, [visible])
-
-  const showSections = activeCategory === 'All' && !filtered
+  const filteredBookmarks = filterByValue(bookmarks, filtered)
 
   return (
     <div className={styles.bookmarks}>
-      <nav className={styles.nav}>
-        <a
-          className={styles.navLogo}
-          href='https://madebyosama.com'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          bookmark<span>folio</span>
-        </a>
-        <div className={styles.navSearch}>
-          <SearchBar
-            value={filtered}
-            onChange={setFiltered}
-            placeholder='Search tools, tags, categories...'
-          />
-        </div>
-        <span className={styles.navCount}>{bookmarks.length} tools</span>
-      </nav>
-
       <header className={styles.header}>
-        <h1 className={styles.title}>All the tools you need, in one place.</h1>
-        <p className={styles.subtitle}>
-          A curated collection of useful websites, tools & resources.
-        </p>
+        <div className={styles.logo}>
+          <a
+            href='https://madebyosama.com'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            madebyosama
+          </a>
+        </div>
+        <p className={styles.title}>Bookmarks</p>
+        <p className={styles.subtitle}>Collection of usefull websites.</p>
+        <SearchBar
+          value={filtered}
+          onChange={setFiltered}
+          placeholder='Search by name, tag, or category...'
+        />
       </header>
 
-      <div className={styles.categories}>
-        <button
-          className={`${styles.categoryPill} ${
-            activeCategory === 'All' ? styles.activePill : ''
-          }`}
-          onClick={() => setActiveCategory('All')}
-        >
-          Explore <span className={styles.pillCount}>{bookmarks.length}</span>
-        </button>
-        {categories.map(([cat, count]) => (
-          <button
-            key={cat}
-            className={`${styles.categoryPill} ${
-              activeCategory === cat ? styles.activePill : ''
-            }`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat} <span className={styles.pillCount}>{count}</span>
-          </button>
-        ))}
+      <div className={styles.filters}>
+        <span className={styles.count}>
+          {filteredBookmarks.length}{' '}
+          {filteredBookmarks.length === 1 ? 'bookmark' : 'bookmarks'}
+        </span>
       </div>
 
       {!loading ? (
         <Loading />
-      ) : visible.length === 0 ? (
-        <div className={styles.empty}>
-          <div className={styles.emptyTitle}>No tools found</div>
-          <p className={styles.emptyText}>Try searching for a different term</p>
-        </div>
-      ) : showSections ? (
-        grouped.map(([cat, items]) => (
-          <section key={cat} className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>{cat}</h2>
-              <span className={styles.sectionCount}>{items.length} tools</span>
-              <button
-                className={styles.sectionLink}
-                onClick={() => {
-                  setActiveCategory(cat)
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                }}
-              >
-                View all →
-              </button>
-            </div>
-            <div className={styles.grid}>
-              {items.map((bookmark, index) => (
-                <BookmarkCard key={index} bookmark={bookmark} />
-              ))}
-            </div>
-          </section>
-        ))
       ) : (
-        <section className={styles.section}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>
-              {activeCategory === 'All' ? 'Results' : activeCategory}
-            </h2>
-            <span className={styles.sectionCount}>{visible.length} tools</span>
-          </div>
-          <div className={styles.grid}>
-            {visible.map((bookmark, index) => (
+        <div className={styles.grid}>
+          {filteredBookmarks.length > 0 ? (
+            filteredBookmarks.map((bookmark, index) => (
               <BookmarkCard key={index} bookmark={bookmark} />
-            ))}
-          </div>
-        </section>
+            ))
+          ) : (
+            <div className={styles.empty}>
+              <div className={styles.emptyTitle}>No bookmarks found</div>
+              <p className={styles.emptyText}>
+                Try searching for a different term
+              </p>
+            </div>
+          )}
+        </div>
       )}
 
       <footer className={styles.footer}>
@@ -169,7 +102,7 @@ export default function BookmarksPage() {
 
       <div
         className={`${styles.backToTop} ${showScrollToTop ? styles.show : ''}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={scrollToTop}
       >
         ↑
       </div>

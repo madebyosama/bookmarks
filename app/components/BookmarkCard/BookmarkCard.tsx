@@ -1,5 +1,7 @@
+// src/components/BookmarkCard.tsx
 'use client'
 
+import Image from 'next/image'
 import React, { useState } from 'react'
 import styles from './BookmarkCard.module.css'
 import { Bookmark } from '../../types'
@@ -8,47 +10,61 @@ interface BookmarkCardProps {
   bookmark: Bookmark
 }
 
+const categoryStyles: Record<string, { background: string; color: string }> = {
+  Utility: { background: '#FDE49F', color: '#7A5E00' },
+  Tools: { background: '#D4EDBC', color: '#2E6B00' },
+  Productivity: { background: '#BFE1F6', color: '#004A70' },
+  Resources: { background: '#FECEC8', color: '#912B2B' },
+  Inspiration: { background: '#FDC7A9', color: '#8B4000' },
+  Reading: { background: '#E6CFF2', color: '#4A2E6E' },
+  Learning: { background: '#C8F0D4', color: '#1E6B3D' },
+}
+
 const BookmarkCard: React.FC<BookmarkCardProps> = ({ bookmark }) => {
   const [imageLoaded, setImageLoaded] = useState(false)
-  const tags = bookmark.Tags.split(',')
-    .map((t) => t.trim())
-    .filter(Boolean)
-    .slice(0, 2)
+
+  const categoryStyle = categoryStyles[bookmark.Category] || {
+    background: '#CCCCCC',
+    color: '#333333',
+  }
 
   return (
     <div
       className={styles.bookmark}
       onClick={() => window.open(bookmark.Link, '_blank')}
     >
-      <img
-        src={bookmark.Thumbnail}
-        alt={bookmark.Title}
-        className={`${styles.image} ${imageLoaded ? styles.show : styles.hide}`}
-        width={1280}
-        height={720}
-        loading='lazy'
-        onLoad={() => setImageLoaded(true)}
-      />
-      <div className={styles.content}>
-        <div className={styles.row}>
-          <img
-            className={styles.favicon}
-            src={bookmark.Favicon}
-            alt=''
-            width={28}
-            height={28}
-          />
-          <div>
-            <div className={styles.title}>{bookmark.Title}</div>
-            <div className={styles.description}>{bookmark.Description}</div>
+      <div className={styles.texts}>
+        <img
+          src={bookmark.Thumbnail}
+          alt='Bookmark Image'
+          className={`${styles.image} ${
+            imageLoaded ? styles.show : styles.hide
+          }`}
+          width={1280}
+          height={720}
+          // priority={true}
+          onLoad={() => setImageLoaded(true)}
+        />
+        <div className={styles.content}>
+          <div className={styles.title}>{bookmark.Title}</div>
+          <div className={styles.description}>{bookmark.Description}</div>
+          <div className={styles.categoryContainer}>
+            <div
+              className={styles.category}
+              style={{
+                backgroundColor: categoryStyle.background,
+                color: categoryStyle.color,
+              }}
+            >
+              {bookmark.Category}
+            </div>
+            <img
+              src={bookmark.Favicon}
+              alt={'Favicon'}
+              width={24}
+              height={24}
+            />
           </div>
-        </div>
-        <div className={styles.tags}>
-          {tags.map((tag) => (
-            <span key={tag} className={styles.tag}>
-              {tag}
-            </span>
-          ))}
         </div>
       </div>
     </div>
