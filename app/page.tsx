@@ -83,15 +83,7 @@ export default function BookmarksPage() {
   return (
     <div className={styles.bookmarks}>
       <header className={styles.header}>
-        <div className={styles.logo}>
-          <a
-            href='https://madebyosama.com'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            madebyosama
-          </a>
-        </div>
+        <div className={styles.logo}></div>
         <p className={styles.title}>Bookmarks</p>
         <p className={styles.subtitle}>Collection of usefull websites.</p>
         <SearchBar

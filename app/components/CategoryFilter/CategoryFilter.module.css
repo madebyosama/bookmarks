@@ -1,6 +1,6 @@
 .categories {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 8px;
   margin-top: 24px;
