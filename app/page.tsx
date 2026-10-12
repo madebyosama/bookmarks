@@ -1,182 +1,77 @@
-'use client'
-
-import React, { useEffect, useMemo, useState } from 'react'
+import Link from 'next/link'
 import styles from './page.module.css'
-import SearchBar from './components/SearchBar/SearchBar'
-import CategoryFilter from './components/CategoryFilter/CategoryFilter'
-import CategorySection from './components/CategorySection/CategorySection'
-import BookmarkCard from './components/BookmarkCard/BookmarkCard'
-import { fetchBookmarks } from './services/bookmarkService'
-import { Bookmark } from './types'
-import { filterByValue } from './utils/filterBookmarks'
-import { categoryColors, defaultCategoryColor } from './utils/categoryColors'
-import Loading from './components/Loading/Loading'
+import Hero from './components/Hero/Hero'
+import Icon, { categoryIcon } from './components/Icon/Icon'
+import { CardGrid, Favicon } from './components/Card/Card'
+import { CollectionTiles, PostTiles } from './components/Tiles/Tiles'
+import { categories, collections, featured, inCategory, picks, posts, recent } from './services/bookmarkService'
 
-export default function BookmarksPage() {
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([])
-  const [filtered, setFiltered] = useState('')
-  const [activeCategory, setActiveCategory] = useState('')
-  const [showScrollToTop, setShowScrollToTop] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    async function loadBookmarks() {
-      const data = await fetchBookmarks()
-      setLoading(true)
-      setBookmarks(data)
-    }
-    loadBookmarks()
-    setLoading(false)
-  }, [])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollToTop(window.scrollY > 200)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const categories = useMemo(() => {
-    const counts = new Map<string, number>()
-    bookmarks.forEach((b) => {
-      if (b.Category) {
-        counts.set(b.Category, (counts.get(b.Category) || 0) + 1)
-      }
-    })
-    return Array.from(counts, ([name, count]) => ({ name, count })).sort(
-      (a, b) => b.count - a.count
-    )
-  }, [bookmarks])
-
-  const categoryFiltered = activeCategory
-    ? bookmarks.filter((b) => b.Category === activeCategory)
-    : bookmarks
-
-  const filteredBookmarks = filterByValue(categoryFiltered, filtered)
-
-  // Explore mode: no category selected and no search — show grouped sections
-  const isExploreMode = !activeCategory && !filtered.trim()
-
-  const groupedBookmarks = useMemo(() => {
-    const groups = new Map<string, Bookmark[]>()
-    bookmarks.forEach((b) => {
-      if (!b.Category) return
-      if (!groups.has(b.Category)) groups.set(b.Category, [])
-      groups.get(b.Category)!.push(b)
-    })
-    return Array.from(groups, ([category, items]) => ({
-      category,
-      items,
-    })).sort((a, b) => b.items.length - a.items.length)
-  }, [bookmarks])
-
-  const handleViewAll = (category: string) => {
-    setActiveCategory(category)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
+export default function HomePage() {
   return (
-    <div className={styles.bookmarks}>
-      <header className={styles.header}>
-        <div className={styles.logo}></div>
-        <p className={styles.title}>Bookmarks</p>
-        <p className={styles.subtitle}>Collection of usefull websites.</p>
-        <SearchBar
-          value={filtered}
-          onChange={setFiltered}
-          placeholder='Search by name, tag, or category...'
-        />
-        <CategoryFilter
-          categories={categories}
-          totalCount={bookmarks.length}
-          activeCategory={activeCategory}
-          onChange={setActiveCategory}
-        />
-      </header>
+    <main className={styles.page} style={{ paddingTop: 24 }}>
+      <Hero items={featured} />
 
-      {!isExploreMode && (
-        <div className={styles.filters}>
-          {activeCategory ? (
-            <div className={styles.filterTitleGroup}>
-              <span
-                className={styles.filterDot}
-                style={{
-                  backgroundColor: (
-                    categoryColors[activeCategory] || defaultCategoryColor
-                  ).color,
-                }}
-              />
-              <h2 className={styles.filterTitle}>{activeCategory}</h2>
-              <span className={styles.count}>
-                {filteredBookmarks.length}{' '}
-                {filteredBookmarks.length === 1 ? 'tool' : 'tools'}
-              </span>
-            </div>
-          ) : (
-            <span className={styles.count}>
-              {filteredBookmarks.length}{' '}
-              {filteredBookmarks.length === 1 ? 'bookmark' : 'bookmarks'}
+      <section className={styles.section} style={{ marginTop: 36 }}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.h2}>
+            <span style={{ color: '#4c6fff', display: 'flex' }}>
+              <Icon name='bolt' size={18} />
             </span>
-          )}
+            Editor’s picks
+          </h2>
+          <Link href='/bookmarks' className={styles.more}>View all →</Link>
         </div>
-      )}
+        <CardGrid items={picks} />
+      </section>
 
-      {!loading ? (
-        <Loading />
-      ) : isExploreMode ? (
-        <div className={styles.sections}>
-          {groupedBookmarks.map(({ category, items }) => (
-            <CategorySection
-              key={category}
-              category={category}
-              bookmarks={items}
-              previewCount={4}
-              onViewAll={handleViewAll}
-            />
+      <section className={styles.section}>
+        <h2 className={styles.h2} style={{ marginBottom: 12 }}>Recently added</h2>
+        <div className={styles.recentGrid}>
+          {recent.map((b) => (
+            <Link key={b.slug} href={`/b/${b.slug}`} className={styles.recentRow}>
+              <Favicon item={b} size={40} />
+              <span className={styles.recentText}>
+                <span className={styles.recentTitle}>{b.Title}</span>
+                <span className={styles.recentSub}>{b.Description}</span>
+              </span>
+            </Link>
           ))}
         </div>
-      ) : (
-        <div className={styles.grid}>
-          {filteredBookmarks.length > 0 ? (
-            filteredBookmarks.map((bookmark, index) => (
-              <BookmarkCard key={index} bookmark={bookmark} />
-            ))
-          ) : (
-            <div className={styles.empty}>
-              <div className={styles.emptyTitle}>No bookmarks found</div>
-              <p className={styles.emptyText}>
-                Try searching for a different term
-              </p>
-            </div>
-          )}
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.h2}>Popular collections</h2>
+          <Link href='/collections' className={styles.more}>All collections →</Link>
         </div>
-      )}
+        <CollectionTiles items={collections.slice(0, 4)} />
+      </section>
 
-      <footer className={styles.footer}>
-        <p className={styles.footerText}>
-          Built by{' '}
-          <a
-            href='https://madebyosama.com'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={styles.footerLink}
-          >
-            Muhammad Osama
-          </a>
-        </p>
-      </footer>
+      <section className={styles.section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.h2}>
+            <Icon name='blog' size={18} />
+            From the blog
+          </h2>
+          <Link href='/blog' className={styles.more}>All posts →</Link>
+        </div>
+        <PostTiles items={posts} />
+      </section>
 
-      <div
-        className={`${styles.backToTop} ${showScrollToTop ? styles.show : ''}`}
-        onClick={scrollToTop}
-      >
-        ↑
-      </div>
-    </div>
+      {/* The original grouped "Explore" view, kept below the new sections. */}
+      {categories.map((c) => (
+        <section key={c.slug} className={styles.section}>
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>
+              <Icon name={categoryIcon(c.name)} size={18} />
+              {c.name}
+              <span style={{ fontSize: 14, fontWeight: 400, color: 'var(--muted)' }}>{c.count}</span>
+            </h2>
+            <Link href={`/categories/${c.slug}`} className={styles.more}>View all →</Link>
+          </div>
+          <CardGrid items={inCategory(c.slug).slice(0, 4)} />
+        </section>
+      ))}
+    </main>
   )
 }

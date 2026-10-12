@@ -1,27 +1,153 @@
+:root {
+  --bg: #f5f5f4;
+  --surface: #ffffff;
+  --surface2: #efefed;
+  --well: #ededeb;
+  --border: #e4e4e1;
+  --border2: #d9d9d5;
+  --text: #1e1e1e;
+  --muted: #5e5e5b;
+  --foot: #3a3a38;
+  --hover: #ececea;
+  --glass: rgba(245, 245, 244, 0.9);
+  --fav-bg: #ffffff;
+  --accent: #0025e8;
+  --token-bg: #e3e8ff;
+  --token-fg: #1a2e99;
+  --term: #8c8c88;
+  --wordmark: #e8e8e5;
+  --scrim: rgba(245, 245, 244, 0.75);
+  --err-bg: #fff4f2;
+  --err-border: #f6d2cc;
+  color-scheme: light;
+}
+
+/* Dark is declared twice: once for the system preference, once for the manual toggle. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b0b0c;
+    --surface: #161618;
+    --surface2: #1f1f23;
+    --well: #161618;
+    --border: #1f1f22;
+    --border2: #2a2a2f;
+    --text: #f2f2f3;
+    --muted: #a0a0a6;
+    --foot: #c9c9ce;
+    --hover: #18181b;
+    --glass: rgba(11, 11, 12, 0.9);
+    --fav-bg: #f2f2f3;
+    --accent: #2f5bff;
+    --token-bg: #22284a;
+    --token-fg: #c9d4ff;
+    --term: #7a7a80;
+    --wordmark: #161618;
+    --scrim: rgba(0, 0, 0, 0.6);
+    --err-bg: #140e0e;
+    --err-border: #2a1c1c;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0b0c;
+  --surface: #161618;
+  --surface2: #1f1f23;
+  --well: #161618;
+  --border: #1f1f22;
+  --border2: #2a2a2f;
+  --text: #f2f2f3;
+  --muted: #a0a0a6;
+  --foot: #c9c9ce;
+  --hover: #18181b;
+  --glass: rgba(11, 11, 12, 0.9);
+  --fav-bg: #f2f2f3;
+  --accent: #2f5bff;
+  --token-bg: #22284a;
+  --token-fg: #c9d4ff;
+  --term: #7a7a80;
+  --wordmark: #161618;
+  --scrim: rgba(0, 0, 0, 0.6);
+  --err-bg: #140e0e;
+  --err-border: #2a1c1c;
+  color-scheme: dark;
+}
+
 html {
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  box-sizing: border-box;
-  max-width: 1200px;
-  margin: auto;
-  background-color: #fdfdfd;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #161616;
-  }
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+select {
+  font-family: inherit;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   font-variation-settings: 'wght' 700;
+}
+
+:focus-visible {
+  outline: 2px solid #4c6fff;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(128, 128, 128, 0.1) 0%, rgba(128, 128, 128, 0.22) 50%, rgba(128, 128, 128, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
