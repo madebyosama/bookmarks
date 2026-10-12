@@ -3,19 +3,19 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import styles from '../../page.module.css'
 import { CardGrid, Favicon } from '../../components/Card/Card'
-import { collections, getCollection } from '../../services/bookmarkService'
+import { getData } from '../../services/bookmarkService'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false
-export const generateStaticParams = () => collections.map((c) => ({ slug: c.slug }))
+export const generateStaticParams = async () => (await getData()).collections.map((c) => ({ slug: c.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const c = getCollection((await params).slug)
+  const c = (await getData()).getCollection((await params).slug)
   return c ? { title: c.title, description: c.description } : {}
 }
 
 export default async function CollectionPage({ params }: Props) {
+  const { collections, getCollection } = await getData()
   const c = getCollection((await params).slug)
   if (!c) notFound()
 

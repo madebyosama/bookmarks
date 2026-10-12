@@ -3,11 +3,12 @@ import type { Metadata } from 'next'
 import styles from '../page.module.css'
 import Icon, { categoryIcon } from '../components/Icon/Icon'
 import { Favicon } from '../components/Card/Card'
-import { categories, inCategory } from '../services/bookmarkService'
+import { getData } from '../services/bookmarkService'
 
 export const metadata: Metadata = { title: 'Categories' }
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  const { categories, inCategory } = await getData()
   return (
     <main className={styles.page}>
       <h1 className={styles.h1}>Categories</h1>

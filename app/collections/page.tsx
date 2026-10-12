@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import styles from '../page.module.css'
-import { CollectionTiles } from '../components/Tiles/Tiles'
-import { collections } from '../services/bookmarkService'
+import { CollectionTile } from '../components/Tiles/Tiles'
+import { getData } from '../services/bookmarkService'
 
 export const metadata: Metadata = { title: 'Collections' }
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  const { collections } = await getData()
   return (
     <main className={styles.page}>
       <h1 className={styles.h1}>Collections</h1>
@@ -13,7 +14,11 @@ export default function CollectionsPage() {
       {collections.length === 0 ? (
         <p className={styles.lede}>No collections yet.</p>
       ) : (
-        <CollectionTiles items={collections} withDescription />
+        <div className={styles.tiles}>
+          {collections.map((c) => (
+            <CollectionTile key={c.slug} c={c} withDescription />
+          ))}
+        </div>
       )}
     </main>
   )

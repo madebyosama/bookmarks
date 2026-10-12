@@ -12,10 +12,13 @@ const paths = {
   chevronRight: 'M9 6l6 6-6 6',
   arrowUp: 'M12 19V5M6 11l6-6 6 6',
   close: 'M6 6l12 12M18 6 6 18',
-  sun: 'M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4',
-  moon: 'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z',
   alert: 'M12 3 2 20h20zM12 10v4M12 17h.01',
   bolt: 'M13 2 4 14h7l-1 8 9-12h-7z',
+  bookmark: 'M6 3h12v18l-6-4-6 4z',
+  latest: 'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 7v5l3 2',
+  plus: 'M12 5v14M5 12h14',
+  info: 'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 11v5M12 8h.01',
+  logout: 'M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H4',
   // categories
   utility: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z',
   tool: 'M12 19l7-7 3 3-7 7zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18zM2 2l7.6 7.6M11 9a2 2 0 1 1 0 4a2 2 0 1 1 0-4z',
@@ -35,14 +38,24 @@ export function categoryIcon(category: string): IconName {
   return key in paths ? key : 'categories'
 }
 
-export default function Icon({ name, size = 16, className }: { name: IconName; size?: number; className?: string }) {
+export default function Icon({
+  name,
+  size = 16,
+  className,
+  filled,
+}: {
+  name: IconName
+  size?: number
+  className?: string
+  filled?: boolean
+}) {
   return (
     <svg
       aria-hidden='true'
       width={size}
       height={size}
       viewBox='0 0 24 24'
-      fill={name === 'bolt' ? 'currentColor' : 'none'}
+      fill={name === 'bolt' || (name === 'bookmark' && filled) ? 'currentColor' : 'none'}
       stroke={name === 'bolt' ? 'none' : 'currentColor'}
       strokeWidth={1.8}
       strokeLinecap='round'
@@ -51,6 +64,19 @@ export default function Icon({ name, size = 16, className }: { name: IconName; s
       style={{ flexShrink: 0 }}
     >
       <path d={paths[name]} />
+    </svg>
+  )
+}
+
+// Toolfolio-style verified rosette, shown after a bookmark's name.
+export function Verified({ size = 15 }: { size?: number }) {
+  return (
+    <svg role='img' aria-label='Verified' width={size} height={size} viewBox='0 0 24 24' style={{ flexShrink: 0, verticalAlign: '-2px' }}>
+      <path
+        fill='#A0A0A6'
+        d='M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z'
+      />
+      <path d='m9 12 2 2 4-4' fill='none' stroke='#0B0B0C' strokeWidth={2.2} strokeLinecap='round' strokeLinejoin='round' />
     </svg>
   )
 }

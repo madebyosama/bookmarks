@@ -57,7 +57,7 @@
   object-fit: cover;
   margin-top: 28px;
   border-radius: 14px;
-  background: var(--well);
+  background: var(--surface);
 }
 
 .about {
@@ -122,4 +122,23 @@
   flex: 1 1 100%;
   padding: 16px 24px 48px;
   border-top: 1px solid var(--border);
+}
+
+.save {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border2);
+  background: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.save[aria-pressed='true'] {
+  background: var(--surface2);
 }

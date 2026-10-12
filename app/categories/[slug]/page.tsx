@@ -5,19 +5,19 @@ import styles from '../../page.module.css'
 import Browse from '../../components/Browse/Browse'
 import Icon, { categoryIcon } from '../../components/Icon/Icon'
 import { CardGridSkeleton } from '../../components/Card/Card'
-import { categories, getCategory, inCategory } from '../../services/bookmarkService'
+import { getData } from '../../services/bookmarkService'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false
-export const generateStaticParams = () => categories.map((c) => ({ slug: c.slug }))
+export const generateStaticParams = async () => (await getData()).categories.map((c) => ({ slug: c.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const c = getCategory((await params).slug)
+  const c = (await getData()).getCategory((await params).slug)
   return c ? { title: c.name, description: c.description } : {}
 }
 
 export default async function CategoryPage({ params }: Props) {
+  const { getCategory, inCategory } = await getData()
   const c = getCategory((await params).slug)
   if (!c) notFound()
 

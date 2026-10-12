@@ -1,12 +1,15 @@
 import Link from 'next/link'
 import styles from './Footer.module.css'
-import { bookmarks, categories, collections, glossary } from '../../services/bookmarkService'
+import { getData } from '../../services/bookmarkService'
 
-const columns = [
+export default async function Footer() {
+  const { bookmarks, categories, collections, glossary } = await getData()
+  const columns = [
   {
     title: 'Browse',
     links: [
       { href: '/', label: 'Explore' },
+      { href: '/latest', label: 'Latest additions' },
       { href: '/bookmarks', label: 'All bookmarks' },
       { href: '/categories', label: 'Categories' },
       { href: '/collections', label: 'Collections' },
@@ -17,9 +20,8 @@ const columns = [
   { title: 'Categories', links: categories.map((c) => ({ href: `/categories/${c.slug}`, label: c.name })) },
   { title: 'Collections', links: collections.map((c) => ({ href: `/collections/${c.slug}`, label: c.title })) },
   { title: 'Glossary', links: glossary.slice(0, 9).map((t) => ({ href: `/glossary/${t.slug}`, label: t.term })) },
-]
+  ]
 
-export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.cols}>

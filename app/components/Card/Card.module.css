@@ -1,20 +1,23 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 28px 16px;
+  gap: 24px 16px;
 }
 
 .card {
+  display: block;
   min-width: 0;
+  color: var(--text);
+  text-decoration: none;
   animation: fade-in 0.28s ease both;
 }
 
 .thumb {
   display: block;
   aspect-ratio: 16 / 10;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  background: var(--well);
+  background: var(--surface);
 }
 
 .img {
@@ -40,68 +43,44 @@
   color: var(--muted);
 }
 
-.row {
+.line {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding-top: 12px;
+  gap: 5px;
+  padding-top: 10px;
+  font-size: 15px;
+  min-width: 0;
 }
 
 .name {
-  flex: 1;
-  min-width: 0;
-  font-size: 15px;
-  color: var(--text);
-  text-decoration: none;
+  font-weight: 600;
   white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 70%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.name strong {
-  font-weight: 600;
-}
-
-.muted {
+.tagline {
   color: var(--muted);
-}
-
-.visit {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  background: var(--surface2);
-  transition: color 0.15s ease;
-}
-
-.visit:hover {
-  color: var(--text);
-}
-
-.desc {
-  margin: 4px 0 0;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .favicon {
   border-radius: 25%;
-  background: var(--fav-bg);
   flex-shrink: 0;
   object-fit: contain;
+}
+
+.faviconFallback {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: #1e1e1e;
+  color: var(--text);
+  border: 1px solid var(--border2);
+  box-sizing: border-box;
 }

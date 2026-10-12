@@ -91,10 +91,6 @@
   text-transform: uppercase;
 }
 
-.list > :last-child {
-  margin-top: 20px;
-}
-
 .rail {
   display: none;
 }

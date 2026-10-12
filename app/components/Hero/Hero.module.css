@@ -73,7 +73,7 @@
 .media {
   flex: 1.4 1 420px;
   min-height: 260px;
-  background: var(--well);
+  background: var(--surface);
   overflow: hidden;
 }
 

@@ -3,28 +3,30 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import styles from '../../page.module.css'
 import detail from './detail.module.css'
-import Icon, { categoryIcon } from '../../components/Icon/Icon'
+import Icon, { categoryIcon, Verified } from '../../components/Icon/Icon'
 import CopyLink from '../../components/CopyLink/CopyLink'
 import SafeImg from '../../components/SafeImg/SafeImg'
 import { CardGrid, Favicon } from '../../components/Card/Card'
-import { bookmarks, collectionsFor, getBookmark, moreInspiration, similar, topTags } from '../../services/bookmarkService'
+import SaveButton from '../../components/SaveButton/SaveButton'
+import { getData } from '../../services/bookmarkService'
+import { topTags } from '../../utils/tags'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false
-export const generateStaticParams = () => bookmarks.map((b) => ({ slug: b.slug }))
+export const generateStaticParams = async () => (await getData()).bookmarks.map((b) => ({ slug: b.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const b = getBookmark((await params).slug)
+  const b = (await getData()).getBookmark((await params).slug)
   return b ? { title: b.Title, description: b.Description, openGraph: { images: [b.Thumbnail] } } : {}
 }
 
-// Tags that appear on more than one bookmark become filter links; one-offs fall back to text search.
-const filterTags = new Set(topTags(bookmarks, 1000).filter((t) => t.count > 1).map((t) => t.tag))
-
 export default async function BookmarkPage({ params }: Props) {
+  const { bookmarks, getBookmark, collectionsFor, similar, moreInspiration } = await getData()
   const b = getBookmark((await params).slug)
   if (!b) notFound()
+
+  // Tags on more than one bookmark become filter links; one-offs fall back to text search.
+  const filterTags = new Set(topTags(bookmarks, 1000).filter((t) => t.count > 1).map((t) => t.tag))
 
   const like = similar(b)
   const more = moreInspiration(b, like)
@@ -45,9 +47,12 @@ export default async function BookmarkPage({ params }: Props) {
           <div className={detail.head}>
             <Favicon item={b} size={56} />
             <div className={detail.titles}>
-              <h1 className={detail.title}>{b.Title}</h1>
+              <h1 className={detail.title}>
+                {b.Title} {b.verified && <Verified size={22} />}
+              </h1>
               <div className={detail.domain}>{b.domain}</div>
             </div>
+            <SaveButton slug={b.slug} className={detail.save} />
             <a href={b.Link} target='_blank' rel='noopener noreferrer' className={detail.visit}>
               Visit website <Icon name='external' size={14} />
             </a>

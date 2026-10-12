@@ -3,19 +3,19 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import styles from '../../page.module.css'
 import { CardGrid } from '../../components/Card/Card'
-import { getTerm, glossary } from '../../services/bookmarkService'
+import { getData } from '../../services/bookmarkService'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false
-export const generateStaticParams = () => glossary.map((t) => ({ slug: t.slug }))
+export const generateStaticParams = async () => (await getData()).glossary.map((t) => ({ slug: t.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getTerm((await params).slug)
+  const t = (await getData()).getTerm((await params).slug)
   return t ? { title: t.term, description: t.definition } : {}
 }
 
 export default async function TermPage({ params }: Props) {
+  const { glossary, getTerm } = await getData()
   const t = getTerm((await params).slug)
   if (!t) notFound()
 

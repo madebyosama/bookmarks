@@ -1,16 +1,17 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './SearchPalette.module.css'
 import Icon, { IconName, categoryIcon } from '../Icon/Icon'
+import Rail from '../Rail/Rail'
 import { Favicon } from '../Card/Card'
+import { CollectionTile, PostTile } from '../Tiles/Tiles'
 import { filterByValue } from '../../utils/filterBookmarks'
-import { Item } from '../../types'
-import { bookmarks, categories, collections, featured, glossary, posts } from '../../services/bookmarkService'
+import { Item, SearchData } from '../../types'
 
 type Row = { href: string; title: string; sub: string; meta: string; item?: Item; icon?: IconName; mark?: string }
-type Group = { label: string; rows: Row[] }
 type Section = 'trending' | 'categories' | 'collections' | 'blog' | 'glossary'
 
 const sections: { key: Section; label: string }[] = [
@@ -26,16 +27,6 @@ const hit = (text: string, q: string) => {
   return q.toLowerCase().split(/\s+/).filter(Boolean).every((w) => h.includes(w))
 }
 
-const rowsFor = {
-  bookmarks: (xs: Item[]): Row[] => xs.map((b) => ({ href: `/b/${b.slug}`, title: b.Title, sub: b.Description, meta: b.Category, item: b })),
-  categories: (xs: typeof categories): Row[] =>
-    xs.map((c) => ({ href: `/categories/${c.slug}`, title: c.name, sub: c.description, meta: String(c.count), icon: categoryIcon(c.name) })),
-  collections: (xs: typeof collections): Row[] =>
-    xs.map((c) => ({ href: `/collections/${c.slug}`, title: c.title, sub: c.description, meta: `${c.items.length} items`, item: c.items[0] })),
-  posts: (xs: typeof posts): Row[] => xs.map((p) => ({ href: `/blog/${p.slug}`, title: p.title, sub: p.excerpt, meta: p.readTime, item: p.items[0] })),
-  terms: (xs: typeof glossary): Row[] => xs.map((t) => ({ href: `/glossary/${t.slug}`, title: t.term, sub: t.definition, meta: 'Glossary', mark: t.term[0] })),
-}
-
 function loadRecent(): string[] {
   try {
     return JSON.parse(localStorage.getItem('recent-searches') || '[]')
@@ -44,7 +35,7 @@ function loadRecent(): string[] {
   }
 }
 
-export default function SearchPalette() {
+export default function SearchPalette({ data }: { data: SearchData }) {
   const router = useRouter()
   const dialog = useRef<HTMLDialogElement>(null)
   const input = useRef<HTMLInputElement>(null)
@@ -82,39 +73,48 @@ export default function SearchPalette() {
   }, [open])
 
   const query = q.trim()
-  const groups: Group[] = useMemo(() => {
+  const rows = useMemo(() => {
+    const b = (xs: Item[]): Row[] => xs.map((x) => ({ href: `/b/${x.slug}`, title: x.Title, sub: x.Description, meta: x.Category, item: x }))
+    const c = (xs: SearchData['categories']): Row[] =>
+      xs.map((x) => ({ href: `/categories/${x.slug}`, title: x.name, sub: x.description, meta: String(x.count), icon: categoryIcon(x.name) }))
+    const k = (xs: SearchData['collections']): Row[] =>
+      xs.map((x) => ({ href: `/collections/${x.slug}`, title: x.title, sub: x.description, meta: `${x.items.length} items`, item: x.items[0] }))
+    const p = (xs: SearchData['posts']): Row[] => xs.map((x) => ({ href: `/blog/${x.slug}`, title: x.title, sub: x.excerpt, meta: x.readTime, item: x.items[0] }))
+    const g = (xs: SearchData['glossary']): Row[] => xs.map((x) => ({ href: `/glossary/${x.slug}`, title: x.term, sub: x.definition, meta: 'Glossary', mark: x.term[0] }))
+
     if (query) {
       return [
-        { label: 'Bookmarks', rows: rowsFor.bookmarks(filterByValue(bookmarks, query).slice(0, 8)) },
-        { label: 'Categories', rows: rowsFor.categories(categories.filter((c) => hit(`${c.name} ${c.description}`, query))) },
-        { label: 'Collections', rows: rowsFor.collections(collections.filter((c) => hit(`${c.title} ${c.description}`, query))) },
-        { label: 'Blog', rows: rowsFor.posts(posts.filter((p) => hit(`${p.title} ${p.excerpt}`, query))) },
-        { label: 'Glossary', rows: rowsFor.terms(glossary.filter((t) => hit(`${t.term} ${t.definition}`, query))) },
-      ].filter((g) => g.rows.length)
+        { label: 'Bookmarks', rows: b(filterByValue(data.bookmarks, query).slice(0, 8)) },
+        { label: 'Categories', rows: c(data.categories.filter((x) => hit(`${x.name} ${x.description}`, query))) },
+        { label: 'Collections', rows: k(data.collections.filter((x) => hit(`${x.title} ${x.description}`, query))) },
+        { label: 'Blog', rows: p(data.posts.filter((x) => hit(`${x.title} ${x.excerpt}`, query))) },
+        { label: 'Glossary', rows: g(data.glossary.filter((x) => hit(`${x.term} ${x.definition}`, query))) },
+      ].filter((grp) => grp.rows.length)
     }
     return {
-      trending: [
-        { label: 'Featured', rows: rowsFor.bookmarks(featured) },
-        { label: 'Popular collections', rows: rowsFor.collections(collections.slice(0, 3)) },
-        { label: 'Latest posts', rows: rowsFor.posts(posts.slice(0, 2)) },
-      ],
-      categories: [{ label: 'Categories', rows: rowsFor.categories(categories) }],
-      collections: [{ label: 'Collections', rows: rowsFor.collections(collections) }],
-      blog: [{ label: 'Blog', rows: rowsFor.posts(posts) }],
-      glossary: [{ label: 'Glossary', rows: rowsFor.terms(glossary) }],
+      trending: [],
+      categories: [{ label: 'Categories', rows: c(data.categories) }],
+      collections: [{ label: 'Collections', rows: k(data.collections) }],
+      blog: [{ label: 'Blog', rows: p(data.posts) }],
+      glossary: [{ label: 'Glossary', rows: g(data.glossary) }],
     }[section]
-  }, [query, section])
+  }, [query, section, data])
 
-  const flat = groups.flatMap((g) => g.rows)
+  const flat = rows.flatMap((g) => g.rows)
+  const trending = !query && section === 'trending'
+
+  const remember = () => {
+    if (!query) return
+    try {
+      localStorage.setItem('recent-searches', JSON.stringify([query, ...recent.filter((r) => r !== query)].slice(0, 5)))
+    } catch {}
+  }
+
+  const close = () => dialog.current?.close()
 
   const go = (row: Row) => {
-    if (query) {
-      const next = [query, ...recent.filter((r) => r !== query)].slice(0, 5)
-      try {
-        localStorage.setItem('recent-searches', JSON.stringify(next))
-      } catch {}
-    }
-    dialog.current?.close()
+    remember()
+    close()
     router.push(row.href)
   }
 
@@ -142,13 +142,7 @@ export default function SearchPalette() {
         <kbd className={styles.kbd}>⌘K</kbd>
       </button>
 
-      <dialog
-        ref={dialog}
-        className={styles.dialog}
-        aria-label='Search'
-        onClose={() => setOpen(false)}
-        onClick={(e) => e.target === dialog.current && dialog.current.close()}
-      >
+      <dialog ref={dialog} className={styles.dialog} aria-label='Search' onClose={() => setOpen(false)} onClick={(e) => e.target === dialog.current && close()}>
         {open && (
           <div className={styles.panel}>
             <div className={styles.inputRow}>
@@ -161,7 +155,7 @@ export default function SearchPalette() {
                   setActive(0)
                 }}
                 onKeyDown={onKeyDown}
-                placeholder='Search bookmarks, categories, collections, posts, terms…'
+                placeholder='Search for bookmarks, categories, collections or terms…'
                 className={styles.input}
                 role='combobox'
                 aria-expanded='true'
@@ -169,89 +163,108 @@ export default function SearchPalette() {
                 aria-activedescendant={flat[active] ? `search-opt-${active}` : undefined}
                 aria-label='Search'
               />
-              <button type='button' className={styles.close} onClick={() => dialog.current?.close()} aria-label='Close search'>
-                <Icon name='close' />
+              <button type='button' className={styles.close} onClick={close} aria-label='Close search'>
+                <Icon name='close' size={18} />
               </button>
             </div>
 
-            {recent.length > 0 && (
-              <div className={styles.recent}>
-                <span className={styles.recentLabel}>Recent</span>
-                {recent.map((r) => (
-                  <button key={r} type='button' className={styles.recentChip} onClick={() => setQ(r)}>
-                    {r}
-                  </button>
-                ))}
-              </div>
-            )}
-
             <div className={styles.body}>
-              <nav className={styles.sections} aria-label='Search sections'>
-                <div className={styles.groupLabel}>Browse</div>
-                {sections.map((s) => (
-                  <button
-                    key={s.key}
-                    type='button'
-                    className={`${styles.section} ${!query && section === s.key ? styles.sectionActive : ''}`}
-                    onClick={() => {
-                      setSection(s.key)
-                      setQ('')
-                      setActive(0)
-                      input.current?.focus()
-                    }}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </nav>
+              <aside className={styles.side}>
+                {recent.length > 0 && (
+                  <div className={styles.recent}>
+                    {recent.map((r) => (
+                      <button key={r} type='button' className={styles.recentChip} onClick={() => setQ(r)}>
+                        <Icon name='latest' size={13} />
+                        {r}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                <nav aria-label='Search sections'>
+                  <div className={styles.navLabel}>Navigation</div>
+                  {sections.map((s) => (
+                    <button
+                      key={s.key}
+                      type='button'
+                      className={`${styles.section} ${!query && section === s.key ? styles.sectionActive : ''}`}
+                      onClick={() => {
+                        setSection(s.key)
+                        setQ('')
+                        setActive(0)
+                        input.current?.focus()
+                      }}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </nav>
+              </aside>
 
               <div id='search-results' role='listbox' aria-label='Results' className={styles.results}>
-                {groups.map((g) => (
-                  <div key={g.label} role='group' aria-label={g.label}>
-                    <div className={styles.groupLabel}>{g.label}</div>
-                    {g.rows.map((r) => {
-                      i += 1
-                      const idx = i
-                      return (
-                        <div
-                          key={r.href}
-                          id={`search-opt-${idx}`}
-                          role='option'
-                          aria-selected={idx === active}
-                          className={`${styles.option} ${idx === active ? styles.optionActive : ''}`}
-                          onMouseMove={() => setActive(idx)}
-                          onClick={() => go(r)}
-                        >
-                          {r.icon ? (
-                            <span className={styles.mark}><Icon name={r.icon} /></span>
-                          ) : r.mark ? (
-                            <span className={styles.mark}>{r.mark}</span>
-                          ) : r.item ? (
-                            <Favicon item={r.item} size={30} />
-                          ) : null}
-                          <span className={styles.text}>
-                            <span className={styles.title}>{r.title}</span>
-                            <span className={styles.sub}>{r.sub}</span>
-                          </span>
-                          <span className={styles.meta}>{r.meta}</span>
-                        </div>
-                      )
-                    })}
+                {trending ? (
+                  <div className={styles.trending}>
+                    <Rail title='Featured' icon={<span className={styles.bolt}><Icon name='bolt' size={16} /></span>} hint='Hand-picked by the editor' columns={7} minWidth={56}>
+                      {data.featured.map((b) => (
+                        <Link key={b.slug} href={`/b/${b.slug}`} className={styles.featured} onClick={close} title={b.Title} aria-label={b.Title}>
+                          <Favicon item={b} size={56} />
+                        </Link>
+                      ))}
+                    </Rail>
+                    <Rail title='Popular collections' href='/collections' columns={2} minWidth={200}>
+                      {data.collections.map((c) => (
+                        <CollectionTile key={c.slug} c={c} onClick={close} />
+                      ))}
+                    </Rail>
+                    <Rail title='Latest articles' href='/blog' columns={2} minWidth={200}>
+                      {data.posts.map((p) => (
+                        <PostTile key={p.slug} p={p} onClick={close} />
+                      ))}
+                    </Rail>
                   </div>
-                ))}
-                {query && groups.length === 0 && (
+                ) : (
+                  rows.map((g) => (
+                    <div key={g.label} role='group' aria-label={g.label}>
+                      <div className={styles.navLabel}>{g.label}</div>
+                      {g.rows.map((r) => {
+                        i += 1
+                        const idx = i
+                        return (
+                          <div
+                            key={r.href}
+                            id={`search-opt-${idx}`}
+                            role='option'
+                            aria-selected={idx === active}
+                            className={`${styles.option} ${idx === active ? styles.optionActive : ''}`}
+                            onMouseMove={() => setActive(idx)}
+                            onClick={() => go(r)}
+                          >
+                            {r.icon ? (
+                              <span className={styles.mark}>
+                                <Icon name={r.icon} />
+                              </span>
+                            ) : r.mark ? (
+                              <span className={styles.mark}>{r.mark}</span>
+                            ) : r.item ? (
+                              <Favicon item={r.item} size={30} />
+                            ) : null}
+                            <span className={styles.text}>
+                              <span className={styles.title}>{r.title}</span>
+                              <span className={styles.sub}>{r.sub}</span>
+                            </span>
+                            <span className={styles.meta}>{r.meta}</span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  ))
+                )}
+                {query && rows.length === 0 && (
                   <div className={styles.empty}>
                     <p className={styles.emptyTitle}>Nothing matches “{query}”</p>
                     <p>Try a tag like “colors”, “icons” or “animations”.</p>
                   </div>
                 )}
               </div>
-            </div>
-
-            <div className={styles.footer}>
-              <span><kbd className={styles.kbd}>↑</kbd> <kbd className={styles.kbd}>↓</kbd> to move</span>
-              <span><kbd className={styles.kbd}>Enter</kbd> to open</span>
-              <span><kbd className={styles.kbd}>Esc</kbd> to close</span>
             </div>
           </div>
         )}

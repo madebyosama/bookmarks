@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import styles from '../page.module.css'
-import { glossary } from '../services/bookmarkService'
+import { getData } from '../services/bookmarkService'
 
 export const metadata: Metadata = { title: 'Glossary' }
 
-const letters = [...new Set(glossary.map((t) => t.term[0].toUpperCase()))]
-
-export default function GlossaryPage() {
+export default async function GlossaryPage() {
+  const { glossary } = await getData()
+  const letters = [...new Set(glossary.map((t) => t.term[0].toUpperCase()))]
   return (
     <main className={styles.page} style={{ maxWidth: 760, margin: '0 auto', paddingTop: 48 }}>
       <h1 className='sr-only'>Glossary</h1>

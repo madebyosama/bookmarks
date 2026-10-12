@@ -3,19 +3,19 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import styles from '../../page.module.css'
 import { CardGrid } from '../../components/Card/Card'
-import { getPost, posts } from '../../services/bookmarkService'
+import { getData } from '../../services/bookmarkService'
 
 type Props = { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false
-export const generateStaticParams = () => posts.map((p) => ({ slug: p.slug }))
+export const generateStaticParams = async () => (await getData()).posts.map((p) => ({ slug: p.slug }))
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const p = getPost((await params).slug)
+  const p = (await getData()).getPost((await params).slug)
   return p ? { title: p.title, description: p.excerpt } : {}
 }
 
 export default async function PostPage({ params }: Props) {
+  const { posts, getPost } = await getData()
   const p = getPost((await params).slug)
   if (!p) notFound()
 
@@ -36,7 +36,7 @@ export default async function PostPage({ params }: Props) {
           <h1 className={styles.h1} style={{ margin: '8px 0 20px', fontSize: 'clamp(30px, 4vw, 42px)', lineHeight: 1.12 }}>
             {p.title}
           </h1>
-          {p.body.map((para, i) => (
+          {p.paragraphs.map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </article>

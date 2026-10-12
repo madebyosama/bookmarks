@@ -1,15 +1,20 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Sidebar from './components/Sidebar/Sidebar'
+import TopBar from './components/TopBar/TopBar'
 import Footer from './components/Footer/Footer'
 import BackToTop from './components/BackToTop/BackToTop'
-import { bookmarks } from './services/bookmarkService'
+import AuthProvider from './components/Auth/AuthProvider'
+import { getData } from './services/bookmarkService'
 
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: { default: 'Bookmarks', template: '%s · Bookmarks' },
-  description: `A hand-picked collection of ${bookmarks.length} useful websites — tools, resources and inspiration.`,
+export async function generateMetadata(): Promise<Metadata> {
+  const { bookmarks } = await getData()
+  return {
+    title: { default: 'Bookmarks', template: '%s · Bookmarks' },
+    description: `A hand-picked collection of ${bookmarks.length} useful websites — tools, resources and inspiration.`,
+  }
 }
 
 const googleSans = localFont({
@@ -20,24 +25,26 @@ const googleSans = localFont({
   ],
 })
 
-// Applies a saved theme choice before first paint so there is no flash.
-const themeScript = `try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}`
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const data = await getData()
+  const art = data.featured.concat(data.picks).map((b) => b.Thumbnail).filter(Boolean)
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en'>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script defer src='https://cloud.umami.is/script.js' data-website-id='51ea0a73-379b-4fcb-b6e9-ff93df70faec'></script>
       </head>
       <body className={googleSans.className}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', minHeight: '100vh' }}>
-          <Sidebar />
-          <div style={{ flex: '999 1 560px', minWidth: 0 }}>
-            {children}
-            <Footer />
+        <AuthProvider art={art}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', minHeight: '100vh' }}>
+            <Sidebar categories={data.categories} search={data.search} />
+            <div style={{ flex: '999 1 560px', minWidth: 0 }}>
+              <TopBar />
+              {children}
+              <Footer />
+            </div>
           </div>
-        </div>
+        </AuthProvider>
         <BackToTop />
       </body>
     </html>

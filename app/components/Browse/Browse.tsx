@@ -7,7 +7,7 @@ import page from '../../page.module.css'
 import Icon from '../Icon/Icon'
 import { CardGrid } from '../Card/Card'
 import { filterByValue } from '../../utils/filterBookmarks'
-import { topTags } from '../../services/bookmarkService'
+import { topTags } from '../../utils/tags'
 import { Item } from '../../types'
 
 const suggestions = ['colors', 'icons', 'animations', 'fonts']

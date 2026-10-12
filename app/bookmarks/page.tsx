@@ -3,11 +3,12 @@ import type { Metadata } from 'next'
 import styles from '../page.module.css'
 import Browse from '../components/Browse/Browse'
 import { CardGridSkeleton } from '../components/Card/Card'
-import { bookmarks } from '../services/bookmarkService'
+import { getData } from '../services/bookmarkService'
 
 export const metadata: Metadata = { title: 'All bookmarks' }
 
-export default function AllBookmarksPage() {
+export default async function AllBookmarksPage() {
+  const { bookmarks } = await getData()
   return (
     <>
       <header style={{ padding: '24px 24px 4px' }}>

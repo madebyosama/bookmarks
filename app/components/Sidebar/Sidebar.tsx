@@ -5,18 +5,18 @@ import { usePathname } from 'next/navigation'
 import styles from './Sidebar.module.css'
 import Icon, { IconName, categoryIcon } from '../Icon/Icon'
 import SearchPalette from '../SearchPalette/SearchPalette'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
-import { categories } from '../../services/bookmarkService'
+import { Category, SearchData } from '../../types'
 
 const nav: { href: string; label: string; icon: IconName; match: string[] }[] = [
   { href: '/', label: 'Explore', icon: 'explore', match: ['/'] },
+  { href: '/latest', label: 'Latest additions', icon: 'latest', match: ['/latest'] },
   { href: '/categories', label: 'Categories', icon: 'categories', match: ['/categories', '/bookmarks'] },
   { href: '/collections', label: 'Collections', icon: 'collections', match: ['/collections'] },
   { href: '/blog', label: 'Blog', icon: 'blog', match: ['/blog'] },
   { href: '/glossary', label: 'Glossary', icon: 'glossary', match: ['/glossary'] },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ categories, search }: { categories: Category[]; search: SearchData }) {
   const path = usePathname()
   const isActive = (match: string[]) =>
     match.some((m) => (m === '/' ? path === '/' : path === m || (path.startsWith(m + '/') && !path.startsWith('/categories/'))))
@@ -28,7 +28,7 @@ export default function Sidebar() {
           <span className={styles.logo}>B</span>
           <span>Bookmarks</span>
         </Link>
-        <SearchPalette />
+        <SearchPalette data={search} />
       </div>
 
       <nav aria-label='Primary' className={styles.list}>
@@ -60,8 +60,6 @@ export default function Sidebar() {
             </Link>
           )
         })}
-
-        <ThemeToggle className={styles.row} />
       </nav>
 
       <nav aria-label='Primary' className={styles.rail}>
@@ -70,7 +68,6 @@ export default function Sidebar() {
             {n.label}
           </Link>
         ))}
-        <ThemeToggle className={styles.chip} />
       </nav>
     </aside>
   )
