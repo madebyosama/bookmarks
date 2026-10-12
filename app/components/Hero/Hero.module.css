@@ -1,0 +1,127 @@
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.copy {
+  flex: 1 1 300px;
+  min-height: 300px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fade-in 0.3s ease both;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.desc {
+  margin: 0;
+  max-width: 360px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary,
+.secondary {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.secondary {
+  border: 1px solid var(--border2);
+  color: var(--text);
+}
+
+.cat {
+  margin-left: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.media {
+  flex: 1.4 1 420px;
+  min-height: 260px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: fade-in 0.35s ease both;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 12px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  color: var(--text);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--border2);
+  cursor: pointer;
+  transition: width 0.2s ease;
+}
+
+.dotActive {
+  width: 24px;
+  background: var(--text);
+}

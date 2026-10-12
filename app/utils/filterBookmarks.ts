@@ -3,15 +3,16 @@ import { Bookmark } from '../types';
 import { getSimilarity } from './similarity';
 
 // Updated filter function to match search terms with fuzzy search
-export function filterByValue(
-  array: Bookmark[],
+export function filterByValue<T extends Bookmark>(
+  array: T[],
   searchString: string
-): Bookmark[] {
-  const searchTerms = searchString.toLowerCase().split(' '); // Split the search string into individual terms
+): T[] {
+  const searchTerms = searchString.toLowerCase().split(' ').filter(Boolean); // Split the search string into individual terms
+  if (searchTerms.length === 0) return array;
   const threshold = 0.6; // Define a threshold for fuzzy matching (0.6 means 60% similarity)
 
-  let exactMatches: Bookmark[] = [];
-  let fuzzyMatches: Bookmark[] = [];
+  let exactMatches: T[] = [];
+  let fuzzyMatches: T[] = [];
 
   array.forEach((item) => {
     // Combine relevant fields into one searchable string with safety checks
