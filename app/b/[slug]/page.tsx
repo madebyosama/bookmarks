@@ -48,7 +48,7 @@ export default async function BookmarkPage({ params }: Props) {
             <Favicon item={b} size={56} />
             <div className={detail.titles}>
               <h1 className={detail.title}>
-                {b.Title} {b.verified && <Verified size={22} />}
+                {b.Title} {b.verified && <Verified size={22} gold={b.subscriber} />}
               </h1>
               <div className={detail.domain}>{b.domain}</div>
             </div>

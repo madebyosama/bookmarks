@@ -5,7 +5,6 @@
 }
 
 .card {
-  position: relative;
   display: block;
   min-width: 0;
   color: var(--text);
@@ -13,8 +12,11 @@
   animation: fade-in 0.28s ease both;
 }
 
-.thumb {
+.thumbWrap {
   position: relative;
+}
+
+.thumb {
   display: block;
   aspect-ratio: 16 / 10;
   border-radius: 10px;
@@ -27,52 +29,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.card:hover .img {
-  transform: scale(1.025);
-}
-
-/* Blurred details panel over the screenshot on hover (Toolfolio). */
-.overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 14px;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  color: #ffffff;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.card:hover .overlay {
-  opacity: 1;
-}
-
-.badge {
-  align-self: flex-start;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.overlayText {
-  margin: auto 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.platforms {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.75);
 }
 
 .thumbFallback {
@@ -86,41 +42,116 @@
   color: var(--muted);
 }
 
-.line {
+/* Details over the screenshot, only while the image itself is hovered (Toolfolio).
+   Clicks fall through to the image link except on the eye/deal buttons. */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.thumbWrap:hover .overlay,
+.thumbWrap:focus-within .overlay {
+  opacity: 1;
+}
+
+.thumbWrap:hover .overlay button,
+.thumbWrap:focus-within .overlay button {
+  pointer-events: auto;
+}
+
+.overlayRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.badge {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.eye {
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  cursor: pointer;
+}
+
+.eye:hover {
+  color: #ffffff;
+}
+
+.overlayText {
+  margin: auto 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.platforms {
+  display: flex;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.deal {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #4d9fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+span.deal {
+  cursor: default;
+}
+
+.meta {
   display: flex;
   align-items: center;
   gap: 5px;
   padding-top: 10px;
-  font-size: 15px;
   min-width: 0;
+  font-size: 13px;
 }
 
 .name {
   color: inherit;
   text-decoration: none;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
-  max-width: 70%;
+  max-width: 60%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Stretched link: the whole card opens the detail page. */
-.name::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-}
-
-.name:focus-visible {
-  outline: none;
-}
-
-.card:has(.name:focus-visible) {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 10px;
+.dot {
+  font-size: 10px;
+  color: var(--muted);
+  opacity: 0.6;
 }
 
 .tagline {
@@ -132,20 +163,20 @@
 }
 
 .actions {
-  position: relative; /* above the stretched link */
   margin-left: auto;
   display: flex;
   flex-shrink: 0;
 }
 
 .action {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   border: 0;
   border-radius: 6px;
   background: none;
   color: var(--muted);
+  opacity: 0.6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,23 +186,18 @@
 .action:hover,
 .action[aria-pressed='true'] {
   color: var(--text);
+  opacity: 1;
 }
 
-/* Only hide the actions where hover exists; touch screens always show them. */
+/* Hover devices: icons only on card hover (the tagline gives up room for them). */
 @media (hover: hover) {
   .actions {
-    position: absolute;
-    right: 0;
-    bottom: -4px;
-    padding-left: 8px;
-    background: var(--bg);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    display: none;
   }
 
   .card:hover .actions,
   .card:focus-within .actions {
-    opacity: 1;
+    display: flex;
   }
 }
 

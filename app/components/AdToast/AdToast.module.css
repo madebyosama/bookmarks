@@ -1,0 +1,103 @@
+/* Bottom-right, leaving room for the back-to-top button. */
+.toast {
+  position: fixed;
+  right: 84px;
+  bottom: 24px;
+  z-index: 14;
+  width: 300px;
+  max-width: calc(100vw - 100px);
+  border-radius: 14px;
+  border: 1px solid var(--border2);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  animation: toast-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.out {
+  animation: toast-out 0.45s ease both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(6px);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(6px);
+  }
+}
+
+.link {
+  display: flex;
+  gap: 12px;
+  padding: 14px 56px 14px 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.corner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ad {
+  padding: 2px 6px;
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.close {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--text);
+  background: var(--hover);
+}

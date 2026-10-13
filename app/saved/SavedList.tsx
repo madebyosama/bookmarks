@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import styles from '../page.module.css'
 import { CardGrid, CardGridSkeleton } from '../components/Card/Card'
+import { CollectionTile, PostCard } from '../components/Tiles/Tiles'
 import { useAuth } from '../components/Auth/AuthProvider'
-import { Item } from '../types'
+import { Collection, Item, Post } from '../types'
 
-export default function SavedList({ bookmarks }: { bookmarks: Item[] }) {
+export default function SavedList({ bookmarks, collections, posts }: { bookmarks: Item[]; collections: Collection[]; posts: Post[] }) {
   const { user, ready, saved, savedReady, openAuth } = useAuth()
 
   if (!ready || (user && !savedReady)) return <CardGridSkeleton count={4} />
@@ -23,16 +24,42 @@ export default function SavedList({ bookmarks }: { bookmarks: Item[] }) {
     )
 
   const items = bookmarks.filter((b) => saved.has(b.slug))
-  if (items.length === 0)
+  const lists = collections.filter((c) => saved.has(`collection:${c.slug}`))
+  const articles = posts.filter((p) => saved.has(`post:${p.slug}`))
+  if (items.length + lists.length + articles.length === 0)
     return (
       <div className={styles.state}>
         <h2 className={styles.stateTitle}>Nothing saved yet</h2>
-        <p className={styles.stateText}>Open any bookmark and press Save.</p>
+        <p className={styles.stateText}>Press the bookmark icon on any site, collection or article.</p>
         <Link href='/' className={styles.button}>
           Explore bookmarks
         </Link>
       </div>
     )
 
-  return <CardGrid items={items} />
+  return (
+    <>
+      {items.length > 0 && <CardGrid items={items} />}
+      {lists.length > 0 && (
+        <>
+          <h2 className={styles.h2} style={{ margin: '44px 0 16px' }}>Collections</h2>
+          <div className={styles.tiles}>
+            {lists.map((c) => (
+              <CollectionTile key={c.slug} c={c} withDescription />
+            ))}
+          </div>
+        </>
+      )}
+      {articles.length > 0 && (
+        <>
+          <h2 className={styles.h2} style={{ margin: '44px 0 16px' }}>Articles</h2>
+          <div className={styles.tiles}>
+            {articles.map((p) => (
+              <PostCard key={p.slug} p={p} />
+            ))}
+          </div>
+        </>
+      )}
+    </>
+  )
 }

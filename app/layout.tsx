@@ -4,6 +4,8 @@ import Sidebar from './components/Sidebar/Sidebar'
 import TopBar from './components/TopBar/TopBar'
 import Footer from './components/Footer/Footer'
 import BackToTop from './components/BackToTop/BackToTop'
+import AdToast from './components/AdToast/AdToast'
+import PreviewDialog from './components/Card/Preview'
 import AuthProvider from './components/Auth/AuthProvider'
 import { getData } from './services/bookmarkService'
 
@@ -44,7 +46,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
               <Footer />
             </div>
           </div>
+          <PreviewDialog />
         </AuthProvider>
+        <AdToast ads={data.ads} />
         <BackToTop />
       </body>
     </html>

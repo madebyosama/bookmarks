@@ -24,10 +24,7 @@ export default function Sidebar({ categories, search }: { categories: Category[]
   return (
     <aside className={styles.aside}>
       <div className={styles.top}>
-        <Link href='/' className={styles.brand}>
-          <span className={styles.logo}>B</span>
-          <span>Bookmarks</span>
-        </Link>
+        <Brand />
         <SearchPalette data={search} />
       </div>
 
@@ -70,5 +67,16 @@ export default function Sidebar({ categories, search }: { categories: Category[]
         ))}
       </nav>
     </aside>
+  )
+}
+
+// Logo + wordmark, shared with the footer.
+export function Brand() {
+  return (
+    <Link href='/' className={styles.brand}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- the site favicon, inverted for the dark theme */}
+      <img src='/favicon.ico' alt='' width={30} height={30} className={styles.logo} />
+      <span>Bookmarks</span>
+    </Link>
   )
 }

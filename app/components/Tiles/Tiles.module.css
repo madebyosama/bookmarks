@@ -78,3 +78,112 @@
   font-size: 13px;
   color: var(--muted);
 }
+
+.saveable {
+  position: relative;
+  display: grid;
+}
+
+.save {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.save:hover,
+.save[aria-pressed='true'] {
+  color: var(--text);
+  background: var(--hover);
+}
+
+.feature {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.featureImg {
+  flex: 1 1 320px;
+  min-height: 200px;
+  max-height: 300px;
+  object-fit: cover;
+  background: var(--surface2);
+}
+
+.featureBody {
+  flex: 1.3 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 56px 24px 24px;
+}
+
+.date {
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dealTag {
+  margin-left: auto;
+  align-self: flex-start;
+  padding-top: 4px;
+  color: #4d9fff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 4px 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.panelLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.panelLink:hover {
+  background: var(--surface2);
+}
+
+.panelIcon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2f5bff, #0b2a8f);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

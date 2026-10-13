@@ -21,10 +21,18 @@ type BookmarkRow = {
   pricing?: string
   platforms?: string[]
   screenshots?: string[]
+  ad_position?: number | null // 0003_ads.sql
+  // 0004_toolfolio.sql
+  tagline?: string
+  subscriber?: boolean
+  deal?: string
+  deal_code?: string
+  startup_position?: number | null
+  trending_position?: number | null
 }
 type CategoryRow = { slug: string; name: string; description: string }
 type CollectionRow = { slug: string; title: string; description: string; position: number; bookmark_slugs: string[] }
-type PostRow = { slug: string; title: string; excerpt: string; tag: string; body: string; bookmark_slugs: string[]; published_at: string }
+type PostRow = { slug: string; title: string; excerpt: string; tag: string; body: string; bookmark_slugs: string[]; published_at: string; featured_position?: number | null }
 type TermRow = { slug: string; term: string; definition: string; bookmark_slugs: string[] }
 
 const REVALIDATE_SECONDS = 300
@@ -48,8 +56,7 @@ async function rows<T>(table: string): Promise<T[]> {
   return data as T[]
 }
 
-const byPosition = (key: 'featured_position' | 'pick_position') => (a: BookmarkRow, b: BookmarkRow) =>
-  (a[key] ?? 0) - (b[key] ?? 0)
+type PositionKey = 'featured_position' | 'pick_position' | 'ad_position' | 'startup_position' | 'trending_position'
 
 // Everything the site shows, loaded once per request (React cache) and from Next's fetch cache otherwise.
 export const getData = cache(async () => {
@@ -81,6 +88,10 @@ export const getData = cache(async () => {
     pricing: r.pricing ?? '',
     platforms: r.platforms ?? [],
     screenshots: r.screenshots ?? [],
+    tagline: r.tagline ?? '',
+    subscriber: r.subscriber ?? false,
+    deal: r.deal ?? '',
+    dealCode: r.deal_code ?? '',
   })
 
   // Oldest first, matching the original file order; "recent" is the reverse.
@@ -113,6 +124,7 @@ export const getData = cache(async () => {
         paragraphs,
         items: pick(p.bookmark_slugs),
         readTime: `${Math.max(1, Math.round(words / 200))} min read`,
+        date: p.published_at,
       }
     })
 
@@ -120,8 +132,21 @@ export const getData = cache(async () => {
     .sort((a, b) => a.term.localeCompare(b.term))
     .map((t) => ({ slug: t.slug, term: t.term, definition: t.definition, items: pick(t.bookmark_slugs) }))
 
-  const featured = sorted.filter((r) => r.featured_position !== null).sort(byPosition('featured_position')).map((r) => bySlug.get(r.slug)!)
-  const picks = sorted.filter((r) => r.pick_position !== null).sort(byPosition('pick_position')).map((r) => bySlug.get(r.slug)!)
+  // Rows with `key` set, in that order (e.g. featured_position → home hero).
+  const positioned = (key: PositionKey) =>
+    sorted
+      .filter((r) => r[key] != null)
+      .sort((a, b) => a[key]! - b[key]!)
+      .map((r) => bySlug.get(r.slug)!)
+  const featured = positioned('featured_position')
+  const picks = positioned('pick_position')
+  const ads = positioned('ad_position')
+  const startups = positioned('startup_position')
+  const trending = positioned('trending_position')
+  const subscribers = bookmarks.filter((b) => b.subscriber)
+  const deals = bookmarks.filter((b) => b.deal)
+  const pinned = pRows.filter((p) => p.featured_position != null).sort((a, b) => a.featured_position! - b.featured_position!)
+  const featuredPosts = pinned.length ? pinned.map((p) => posts.find((x) => x.slug === p.slug)!) : posts.slice(0, 3)
   const recent = [...bookmarks].reverse()
 
   const inCategory = (slug: string) => bookmarks.filter((b) => b.categorySlug === slug)
@@ -153,6 +178,12 @@ export const getData = cache(async () => {
     glossary,
     featured,
     picks,
+    ads,
+    startups,
+    trending,
+    subscribers,
+    deals,
+    featuredPosts,
     recent,
     search,
     getBookmark: (slug: string) => bySlug.get(slug),
@@ -162,6 +193,8 @@ export const getData = cache(async () => {
     getTerm: (slug: string) => glossary.find((t) => t.slug === slug),
     collectionsFor: (b: Item) => collections.filter((c) => c.items.some((x) => x.slug === b.slug)),
     inCategory,
+    // Posts that mention a bookmark from this category.
+    postsIn: (slug: string) => posts.filter((p) => p.items.some((x) => x.categorySlug === slug)),
     similar,
     moreInspiration,
   }
