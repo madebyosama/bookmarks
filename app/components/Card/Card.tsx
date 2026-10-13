@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './Card.module.css'
-import { Verified } from '../Icon/Icon'
+import Icon, { Verified } from '../Icon/Icon'
+import SaveButton from '../SaveButton/SaveButton'
 import SafeImg from '../SafeImg/SafeImg'
 import { Item } from '../../types'
 
@@ -22,10 +23,11 @@ export function Favicon({ item, size = 40 }: { item: Item; size?: number }) {
   )
 }
 
-// Toolfolio card: screenshot, then "Name ✓ · tagline" on one line.
+// Toolfolio card: screenshot (details on hover), then "Name ✓ · tagline" and save/visit actions.
+// The title link stretches over the whole card so the actions can be real buttons beside it.
 export default function Card({ item }: { item: Item }) {
   return (
-    <Link href={`/b/${item.slug}`} className={styles.card}>
+    <div className={styles.card}>
       <span className={styles.thumb}>
         <SafeImg
           src={item.Thumbnail}
@@ -35,13 +37,26 @@ export default function Card({ item }: { item: Item }) {
           className={styles.img}
           fallback={<span className={styles.thumbFallback}>{item.Title}</span>}
         />
+        <span className={styles.overlay} aria-hidden='true'>
+          {item.pricing && <span className={styles.badge}>{item.pricing}</span>}
+          <span className={styles.overlayText}>{item.about || item.Description}</span>
+          {item.platforms.length > 0 && <span className={styles.platforms}>{item.platforms.join(' · ')}</span>}
+        </span>
       </span>
       <span className={styles.line}>
-        <strong className={styles.name}>{item.Title}</strong>
+        <Link href={`/b/${item.slug}`} className={styles.name}>
+          {item.Title}
+        </Link>
         {item.verified && <Verified />}
         <span className={styles.tagline}>· {item.Description}</span>
+        <span className={styles.actions}>
+          <SaveButton slug={item.slug} iconOnly className={styles.action} />
+          <a href={item.Link} target='_blank' rel='noopener noreferrer' className={styles.action} aria-label={`Visit ${item.Title}`}>
+            <Icon name='external' size={16} />
+          </a>
+        </span>
       </span>
-    </Link>
+    </div>
   )
 }
 

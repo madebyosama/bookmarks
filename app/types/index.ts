@@ -15,6 +15,11 @@ export type Item = Bookmark & {
   domain: string;
   verified: boolean;
   createdAt: string;
+  about: string;
+  features: string[];
+  pricing: string;
+  platforms: string[];
+  screenshots: string[];
 };
 
 export type Category = { name: string; slug: string; count: number; description: string };

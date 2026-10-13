@@ -23,3 +23,23 @@ export default function CopyLink({ url, className }: { url: string; className?: 
     </button>
   )
 }
+
+// Native share sheet where supported (mobile, Safari); otherwise copies this page's URL.
+export function ShareButton({ title, className }: { title: string; className?: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const share = async () => {
+    const url = location.href
+    if (navigator.share) return navigator.share({ title, url }).catch(() => {})
+    await navigator.clipboard.writeText(url).catch(() => {})
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1600)
+  }
+
+  return (
+    <button type='button' onClick={share} className={className} aria-live='polite'>
+      <Icon name='share' />
+      {copied ? 'Page link copied' : 'Share'}
+    </button>
+  )
+}
