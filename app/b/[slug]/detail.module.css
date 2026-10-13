@@ -49,23 +49,49 @@
   gap: 8px;
 }
 
-.shot {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  margin-top: 28px;
-  border-radius: 14px;
-  background: var(--surface);
-}
-
 .about {
   margin: 0;
   font-size: 22px;
   line-height: 1.4;
   font-weight: 600;
   letter-spacing: -0.01em;
+}
+
+.aboutBody {
+  margin: 14px 0 0;
+  max-width: 68ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--foot);
+}
+
+.features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(260px, calc(50% - 32px)), 1fr));
+  gap: 14px 32px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--foot);
+}
+
+.features li {
+  display: flex;
+  gap: 12px;
+}
+
+.features svg {
+  flex-shrink: 0;
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
 }
 
 .rail {

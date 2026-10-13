@@ -15,6 +15,12 @@ type BookmarkRow = {
   featured_position: number | null
   pick_position: number | null
   created_at: string
+  // From 0002_details.sql; optional so the app still runs before that migration.
+  about?: string
+  features?: string[]
+  pricing?: string
+  platforms?: string[]
+  screenshots?: string[]
 }
 type CategoryRow = { slug: string; name: string; description: string }
 type CollectionRow = { slug: string; title: string; description: string; position: number; bookmark_slugs: string[] }
@@ -70,6 +76,11 @@ export const getData = cache(async () => {
     domain: r.link.replace(/^https?:\/\/(www\.)?/, '').split('/')[0],
     verified: r.verified,
     createdAt: r.created_at,
+    about: r.about ?? '',
+    features: r.features ?? [],
+    pricing: r.pricing ?? '',
+    platforms: r.platforms ?? [],
+    screenshots: r.screenshots ?? [],
   })
 
   // Oldest first, matching the original file order; "recent" is the reverse.

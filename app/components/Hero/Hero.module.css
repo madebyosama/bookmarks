@@ -1,4 +1,21 @@
+.track {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
 .hero {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   display: flex;
   flex-wrap: wrap;
   border-radius: 18px;
@@ -9,13 +26,28 @@
 
 .copy {
   flex: 1 1 300px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 300px;
   padding: 32px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  animation: fade-in 0.3s ease both;
+}
+
+/* The slide's own screenshot, blurred, behind the copy. Same URL as .img, so no extra download. */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.5);
+  filter: blur(48px) brightness(0.45);
+  opacity: 0.6;
 }
 
 .title {
@@ -82,46 +114,53 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  animation: fade-in 0.35s ease both;
 }
 
 .controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding-top: 12px;
-}
-
-.arrow {
-  width: 32px;
-  height: 32px;
-  border: 0;
-  border-radius: 8px;
-  background: none;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.arrow:hover {
-  color: var(--text);
+  gap: 8px;
+  padding-top: 16px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  position: relative;
+  overflow: hidden;
+  width: 6px;
+  height: 6px;
   padding: 0;
   border: 0;
   border-radius: 999px;
   background: var(--border2);
   cursor: pointer;
-  transition: width 0.2s ease;
+  transition: width 0.3s ease;
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .dotActive {
   width: 24px;
-  background: var(--text);
+}
+
+.dotActive::after {
+  transform: none;
+}
+
+.dotActive.playing::after {
+  animation: dot-fill 6s linear;
+}
+
+@keyframes dot-fill {
+  from {
+    transform: scaleX(0);
+  }
 }

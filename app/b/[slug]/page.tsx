@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation'
 import styles from '../../page.module.css'
 import detail from './detail.module.css'
 import Icon, { categoryIcon, Verified } from '../../components/Icon/Icon'
-import CopyLink from '../../components/CopyLink/CopyLink'
-import SafeImg from '../../components/SafeImg/SafeImg'
+import CopyLink, { ShareButton } from '../../components/CopyLink/CopyLink'
+import Gallery from '../../components/Gallery/Gallery'
 import { CardGrid, Favicon } from '../../components/Card/Card'
 import SaveButton from '../../components/SaveButton/SaveButton'
 import { getData } from '../../services/bookmarkService'
@@ -58,18 +58,25 @@ export default async function BookmarkPage({ params }: Props) {
             </a>
           </div>
 
-          <SafeImg
-            src={b.Thumbnail}
-            alt={`Screenshot of ${b.Title}`}
-            loading='eager'
-            width={1280}
-            height={720}
-            className={detail.shot}
-            fallback={<div className={detail.shot} />}
-          />
+          <Gallery images={[b.Thumbnail, ...b.screenshots].filter(Boolean)} title={b.Title} />
 
           <div className={styles.label} style={{ margin: '36px 0 10px' }}>About</div>
           <p className={detail.about}>{b.Description}</p>
+          {b.about && <p className={detail.aboutBody}>{b.about}</p>}
+
+          {b.features.length > 0 && (
+            <>
+              <div className={styles.label} style={{ margin: '32px 0 10px' }}>Features &amp; use cases</div>
+              <ul className={detail.features}>
+                {b.features.map((f) => (
+                  <li key={f}>
+                    <Icon name='chevronRight' size={14} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
 
           <div className={styles.label} style={{ margin: '32px 0 10px' }}>Tags</div>
           <div className={styles.chips}>
@@ -87,7 +94,27 @@ export default async function BookmarkPage({ params }: Props) {
 
         <aside className={detail.rail}>
           <CopyLink url={b.Link} className={detail.railRow} />
+          <ShareButton title={b.Title} className={detail.railRow} />
           <dl className={detail.meta}>
+            {b.pricing && (
+              <>
+                <dt className={styles.label}>Pricing</dt>
+                <dd>{b.pricing}</dd>
+              </>
+            )}
+            {b.platforms.length > 0 && (
+              <>
+                <dt className={styles.label}>Platforms</dt>
+                <dd className={detail.platforms}>
+                  {b.platforms.map((p) => (
+                    <span key={p} className={detail.inline}>
+                      {p.toLowerCase() === 'web' && <Icon name='globe' size={16} />}
+                      {p}
+                    </span>
+                  ))}
+                </dd>
+              </>
+            )}
             <dt className={styles.label}>Category</dt>
             <dd>
               <Link href={`/categories/${b.categorySlug}`} className={detail.inline}>
@@ -96,6 +123,8 @@ export default async function BookmarkPage({ params }: Props) {
             </dd>
             <dt className={styles.label}>Domain</dt>
             <dd>{b.domain}</dd>
+            <dt className={styles.label}>Added</dt>
+            <dd>{new Date(b.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</dd>
           </dl>
 
           {inCollections.length > 0 && (
