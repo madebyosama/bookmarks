@@ -163,7 +163,7 @@ span.deal {
 }
 
 .actions {
-  margin-left: auto;
+  margin: -4px 0 -4px auto; /* 26px icons in a ~20px row: don't grow it when they appear */
   display: flex;
   flex-shrink: 0;
 }
