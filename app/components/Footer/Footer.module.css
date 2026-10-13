@@ -1,19 +1,52 @@
 .footer {
   border-top: 1px solid var(--border);
-  padding: 40px 24px 0;
-  overflow: hidden;
+  padding: 40px 24px 28px;
 }
 
-.cols {
+.top {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px 24px;
+}
+
+/* Brand and the two-column Categories list take double width (once there's room). */
+@media (min-width: 720px) {
+  .about,
+  .wide {
+    grid-column: span 2;
+  }
+}
+
+.about {
+  max-width: 360px;
+}
+
+.blurb {
+  margin: 10px 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.social {
+  display: inline-flex;
+  margin: 14px 8px 0;
+  color: var(--muted);
+}
+
+.social:hover {
+  color: var(--text);
 }
 
 .title {
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
   margin-bottom: 10px;
+}
+
+.wide .links {
+  columns: 2;
+  column-gap: 24px;
 }
 
 .link {
@@ -22,6 +55,7 @@
   font-size: 14px;
   color: var(--foot);
   text-decoration: none;
+  break-inside: avoid;
 }
 
 .link:hover {
@@ -33,7 +67,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 32px;
+  margin-top: 40px;
   font-size: 13px;
   color: var(--muted);
 }
@@ -41,16 +75,4 @@
 .meta a {
   font-weight: 600;
   text-decoration: none;
-}
-
-.wordmark {
-  margin: 28px 0 -0.1em;
-  font-weight: 700;
-  font-size: clamp(64px, 13.5vw, 196px);
-  line-height: 0.8;
-  letter-spacing: -0.055em;
-  color: var(--wordmark);
-  text-align: center;
-  white-space: nowrap;
-  user-select: none;
 }

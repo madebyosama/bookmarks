@@ -76,7 +76,8 @@ export default function Rail({
         ref={track}
         className={styles.track}
         onScroll={measure}
-        style={{ '--n': columns, '--min': `${minWidth}px` } as React.CSSProperties}
+        // One per view (e.g. featured articles) means full width; minmax would settle on the minimum.
+        style={{ '--n': columns, '--min': columns === 1 ? '100%' : `${minWidth}px` } as React.CSSProperties}
       >
         {children}
       </div>

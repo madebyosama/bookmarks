@@ -12,9 +12,10 @@ type AuthContext = {
   ready: boolean
   openAuth: (mode?: AuthMode, reason?: string) => void
   signOut: () => Promise<void>
+  // Bookmark slugs, plus "collection:<slug>" / "post:<slug>" for saved collections and articles.
   saved: Set<string>
   savedReady: boolean
-  toggleSave: (slug: string) => Promise<void>
+  toggleSave: (key: string) => Promise<void>
 }
 
 const Ctx = createContext<AuthContext | null>(null)
@@ -49,13 +50,15 @@ export default function AuthProvider({ children, art }: { children: ReactNode; a
     setSaved(new Set())
     setSavedReady(false)
     if (!supabase || !user) return setSavedReady(true)
-    supabase
-      .from('saves')
-      .select('bookmark_slug')
-      .then(({ data }) => {
-        setSaved(new Set((data ?? []).map((r) => r.bookmark_slug as string)))
-        setSavedReady(true)
-      })
+    Promise.all([supabase.from('saves').select('bookmark_slug'), supabase.from('list_saves').select('kind, slug')]).then(([b, l]) => {
+      setSaved(
+        new Set([
+          ...(b.data ?? []).map((r) => r.bookmark_slug as string),
+          ...(l.data ?? []).map((r) => `${r.kind}:${r.slug}`), // empty until 0004_toolfolio.sql is run
+        ])
+      )
+      setSavedReady(true)
+    })
   }, [user])
 
   const openAuth = useCallback((mode: AuthMode = 'signup', reason?: string) => setModal({ mode, reason }), [])
@@ -66,20 +69,26 @@ export default function AuthProvider({ children, art }: { children: ReactNode; a
 
   // Optimistic: flip locally, roll back if the write fails.
   const toggleSave = useCallback(
-    async (slug: string) => {
+    async (key: string) => {
       if (!supabase || !user) return openAuth('signup', 'Create a free account to save bookmarks.')
-      const had = saved.has(slug)
+      const had = saved.has(key)
       const flip = (on: boolean) =>
         setSaved((s) => {
           const n = new Set(s)
-          if (on) n.add(slug)
-          else n.delete(slug)
+          if (on) n.add(key)
+          else n.delete(key)
           return n
         })
       flip(!had)
-      const { error } = had
-        ? await supabase.from('saves').delete().eq('bookmark_slug', slug)
-        : await supabase.from('saves').insert({ bookmark_slug: slug })
+      const [kind, slug] = key.includes(':') ? key.split(':') : ['bookmark', key]
+      const { error } =
+        kind === 'bookmark'
+          ? had
+            ? await supabase.from('saves').delete().eq('bookmark_slug', slug)
+            : await supabase.from('saves').insert({ bookmark_slug: slug })
+          : had
+            ? await supabase.from('list_saves').delete().eq('kind', kind).eq('slug', slug)
+            : await supabase.from('list_saves').insert({ kind, slug })
       if (error) flip(had)
     },
     [saved, user, openAuth]
