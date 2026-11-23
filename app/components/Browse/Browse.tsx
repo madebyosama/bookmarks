@@ -5,14 +5,14 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import styles from './Browse.module.css'
 import page from '../../page.module.css'
 import Icon from '../Icon/Icon'
-import { CardGrid } from '../Card/Card'
+import { CardGrid, Favicon } from '../Card/Card'
 import { filterByValue } from '../../utils/filterBookmarks'
 import { topTags } from '../../utils/tags'
 import { Item } from '../../types'
 
 const suggestions = ['colors', 'icons', 'animations', 'fonts']
 
-// Filter state lives in the URL (?q=&tag=&tag=&sort=) so results are shareable and survive Back.
+// Filter state lives in the URL (?q=&tag=&tag=&sort=&view=) so results are shareable and survive Back.
 export default function Browse({ items }: { items: Item[] }) {
   const pathname = usePathname()
   const params = useSearchParams()
@@ -21,15 +21,18 @@ export default function Browse({ items }: { items: Item[] }) {
   const q = params.get('q') || ''
   const tags = params.getAll('tag')
   const sort = params.get('sort') || 'curated'
+  const view = params.get('view') || 'cards'
 
-  const update = (next: { q?: string; tags?: string[]; sort?: string }) => {
+  const update = (next: { q?: string; tags?: string[]; sort?: string; view?: string }) => {
     const p = new URLSearchParams()
     const nq = next.q ?? q
     const nt = next.tags ?? tags
     const ns = next.sort ?? sort
+    const nv = next.view ?? view
     if (nq) p.set('q', nq)
     nt.forEach((t) => p.append('tag', t))
     if (ns !== 'curated') p.set('sort', ns)
+    if (nv !== 'cards') p.set('view', nv)
     const s = p.toString()
     // Native replaceState updates useSearchParams synchronously (Next ≥14.1), so typing never lags.
     window.history.replaceState(null, '', s ? `${pathname}?${s}` : pathname)
@@ -96,6 +99,13 @@ export default function Browse({ items }: { items: Item[] }) {
 
         <div className={styles.right}>
           <span>Showing {list.length}</span>
+          <div className={styles.views} role='group' aria-label='View'>
+            {['cards', 'shelf'].map((v) => (
+              <button key={v} type='button' aria-pressed={view === v} onClick={() => update({ view: v })}>
+                {v[0].toUpperCase() + v.slice(1)}
+              </button>
+            ))}
+          </div>
           <label className={styles.sort}>
             Sort
             <select value={sort} onChange={(e) => update({ sort: e.target.value })} className={styles.select}>
@@ -123,10 +133,33 @@ export default function Browse({ items }: { items: Item[] }) {
               </button>
             </div>
           </div>
+        ) : view === 'shelf' ? (
+          <Shelf items={list} />
         ) : (
           <CardGrid items={list} />
         )}
       </div>
     </>
+  )
+}
+
+// Toolshelf style: every bookmark as favicon + name, grouped by category in the current sort order.
+function Shelf({ items }: { items: Item[] }) {
+  const groups = new Map<string, Item[]>()
+  for (const b of items) groups.set(b.Category, [...(groups.get(b.Category) ?? []), b])
+  return (
+    <div className={styles.shelf}>
+      {[...groups].map(([name, list]) => (
+        <section key={name} className={styles.shelfGroup}>
+          <h2>{name}</h2>
+          {list.map((b) => (
+            <a key={b.slug} href={b.Link} target='_blank' rel='noopener noreferrer'>
+              <Favicon item={b} size={16} />
+              {b.Title}
+            </a>
+          ))}
+        </section>
+      ))}
+    </div>
   )
 }

@@ -5,7 +5,7 @@ A hand-picked directory of useful websites. Next.js (App Router) + Supabase.
 ## Setup
 
 1. Create a Supabase project.
-2. In the SQL editor, run `supabase/migrations/0001_init.sql`, then `supabase/seed.sql`, then the other migrations in order (`0002`–`0004`; `0004` fills in taglines for the seeded bookmarks).
+2. In the SQL editor, run `supabase/migrations/0001_init.sql`, then `supabase/seed.sql`, then the other migrations in order (`0002`–`0005`; `0004` fills in taglines for the seeded bookmarks, `0005` imports the Toolshelf tools).
 3. `cp .env.example .env.local` and fill in the project URL and anon key (Project Settings → API).
    Add the same two variables in Vercel. Optional: `NEXT_PUBLIC_DISCORD_URL` (invite link) shows the Discord banner and footer icon.
 4. Sign-in (Authentication → Providers in Supabase):

@@ -151,3 +151,71 @@
 .results {
   padding: 24px 24px 56px;
 }
+
+.views {
+  display: flex;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+}
+
+.views button {
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.views button[aria-pressed='true'] {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+/* Toolshelf layout: hairline-boxed categories in an auto-fit grid of compact links. */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.shelfGroup {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  background: var(--bg);
+}
+
+.shelfGroup h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.shelfGroup a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 20%, transparent);
+  text-underline-offset: 3px;
+}
+
+.shelfGroup a:hover {
+  color: var(--accent);
+}
+
+@media (pointer: coarse) {
+  .shelfGroup a {
+    min-height: 44px;
+  }
+}
